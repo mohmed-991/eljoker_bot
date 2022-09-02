@@ -1,5 +1,5 @@
 {
-    "name": "卍 HETLAR 𝙱𝙾𝚃 卍",
+    "name": " HETLAR-𝙱𝙾𝚃 ",
     "version": "1.0.0",
     "description": "undefined",
     "main": "/bobiz/index.js",
@@ -8,15 +8,15 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/bobizbotmd"
+        "url": "git+https://github.com/mahmoudphp1"
     },
     "author": "unknown",
     "developer": "unknown",
     "license": "GPL-3.0-or-later",
     "bugs": {
-        "url": "https://github.com/bobizbotmd"
+        "url": "https://github.com/mahmoudphp1"
     },
-    "homepage": "https://github.com/bobizbotmd",
+    "homepage": "https://github.com/mahmoudphp1",
     "dependencies": {
         "@adiwajshing/baileys": "^4.4.0",
         "simple-git": ">=3.5.0",

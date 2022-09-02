@@ -88,7 +88,6 @@ async function cmd(conn, mek) {
 
             case 'alive':
                 try {
-                    await conn.sendMessage(from, { audio: fs.readFileSync("./src/alive.mpeg"), ptt: true }, { quoted: mek })
                     var alivemsg = ''
                     if (config.ALIVEMSG == 'default') alivemsg = '```👋 Hi! I am online now. مرحبا أنا متصل الان في خدمتك سيدي😉```'
                     if (config.ALIVEMSG !== 'default') alivemsg = config.ALIVEMSG
@@ -547,7 +546,6 @@ async function cmd(conn, mek) {
             case 'menu':
             case 'list':
             case 'panal':
-                await conn.sendMessage(from, { audio: fs.readFileSync("./src/alive.mpeg"), mimetype: 'audio/mpeg', ptt: true }, { quoted: mek })
                 const msg = `╭────────────────────╮
 				卍 HETLAR 𝙱𝙾𝚃 卍
 ╰────────────────────╯
@@ -572,7 +570,7 @@ www.instagram.com/hetlarr_official
 │  ⸙ .alive      هل البوت شغال ام لا
 │  ⸙ .song           تحميل الموسيقى 
 ╰────────────────────╯
-     ʙʏ ɴᴏᴜʀᴇᴅᴅɪɴᴇ ᴏᴜᴀғʏ`
+     BY MAHMOUD MEDHAT`
                 await conn.sendMessage(from, { text: msg }, { quoted: mek })
 
                 break
