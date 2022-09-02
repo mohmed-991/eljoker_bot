@@ -1,0 +1,93 @@
+{
+    "name": "HETLAR",
+    "description": "HETLAR  - Makes it easy and fun to use Whatsapp.",
+    "logo": "https://i.ibb.co/6s9bjX8/logo.jpg",
+    "keywords": ["whatsapp", "userbot", "bobiz", "bot", "ai", "MD"],
+    "repository": "https://github.com/bobizbotmd/BOBIZ-MD",
+    "website": "",
+    "success_url": "",
+    "stack": "container",
+    "env": {
+        "BOBIZ_SESSION": {
+            "description": "qr session code",
+            "required": true
+        },
+
+
+        "URL_1NAME": {
+            "description": "",
+            "value": "تـابعني على الانستغرام",
+            "required": true
+        },
+        "URL_1LINK": {
+            "description": "",
+            "value": "https://www.instagram.com/hetlarr_official/",
+            "required": true
+        },
+        "URL_2NAME": {
+            "description": "",
+            "value": "Github",
+            "required": true
+        },
+        "URL_2LINK": {
+            "description": "",
+            "value": "https://github.com/",
+            "required": true
+        },
+
+        "ALIVE_MESSAGE": {
+            "description": "add text",
+            "value": "defaul",
+            "required": true
+        },
+        "ALIVE_LOGO": {
+            "description": "add direct image url",
+            "value": "https://i.ibb.co/6s9bjX8/logo.jpg",
+            "required": true
+        },
+
+        "SONG_DOWN": {
+            "description": "song downloading text",
+            "value": "*📥جاري تحميل الأغنية...*",
+            "required": true
+        },
+        "SONG_UP": {
+            "description": "song uploading text",
+            "value": "*📤جاري ارسال الأغنية او الموسيقى...*",
+            "required": true
+        },
+        "VIDEO_DOWN": {
+            "description": "video downloading text",
+            "value": "*📥جاري تحميل الفيديو...*",
+            "required": true
+        },
+        "VIDEO_UP": {
+            "description": "video uploading text",
+            "value": "*📤جاري ارسال الفيديو...*",
+            "required": true
+        },
+        "FILE_DOWN": {
+            "description": "file downloading text",
+            "value": "*📥جاري تحميل الملف...*",
+            "required": true
+        },
+        "FILE_UP": {
+            "description": "file uploading text",
+            "value": "*📤جاري ارسال الملف ...*",
+            "required": true
+        },
+        "STIC_WM": {
+            "description": "حقوق الملصق",
+            "value": "卍 HETLAR 𝙱𝙾𝚃 卍",
+            "required": true
+        }
+
+
+    },
+    "addons": [{
+        "plan": "heroku-postgresql"
+    }],
+    "buildpacks": [{
+        "url": "heroku-community/apt"
+    }]
+}
