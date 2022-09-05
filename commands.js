@@ -16,7 +16,7 @@ const { sms } = require('./lib/message');
 const { imageToWebp, videoToWebp, writeExif } = require('./lib/stic')
 const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep } = require('./lib/functions')
 const fs = require('fs');
-const ownerNumber = ['94701629707']
+const ownerNumber = ['201148422820']
 const prefix = '.'
 const axios = require('axios');
 const { yt720, yt480, yt360 } = require('./lib/ytmp4');
@@ -245,6 +245,7 @@ async function cmd(conn, mek) {
                 // tiktok //
 
             case "tik":
+            case "tk":
             case "tiktok":
                 try {
                     if (!q) return await conn.sendMessage(from, { text: 'need tiktok link' }, { quoted: mek })
