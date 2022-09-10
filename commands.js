@@ -273,12 +273,10 @@ async function cmd(conn, mek) {
                                 hasil.push(result)
                             })
                         })
-                        return data = hasil[0]
+                        return hasil[0]
                     }
-
                     //const data = await axios.get('https://api-bobiz.herokuapp.com/api/ig?url=' + q)
-                    const file = data
-
+                    const file = hasil[0]
                     const fileup = await conn.sendMessage(from, { text: config.VIDEO_DOWN }, { quoted: mek })
                     await conn.sendMessage(from, { delete: fileup.key })
                     const filedown = await conn.sendMessage(from, { text: config.VIDEO_UP }, { quoted: mek })
