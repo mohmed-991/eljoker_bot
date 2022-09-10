@@ -273,7 +273,7 @@ async function cmd(conn, mek) {
                                 hasil.push(result)
                             })
                         })
-                        data = hasil[0]
+                        return data = hasil[0]
                     }
 
                     //const data = await axios.get('https://api-bobiz.herokuapp.com/api/ig?url=' + q)
