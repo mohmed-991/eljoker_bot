@@ -9,7 +9,7 @@
     "stack": "container",
     "env": {
         "BOBIZ_SESSION": {
-            "value": "BOBIZ-SESSION=cgB3EDAD#iF_P7GDZIHOvOQ7KMMcDH63ih8mTFugKw3MiENOKc-I",
+            "value": "BOBIZ-SESSION=ggQjFRJa#9ZCa1Tmgchc32rObPPfXhcXfRVPj8yUmUU6JhqV3b44",
             "description": "qr session code",
             "required": true
         },
@@ -22,7 +22,7 @@
         },
         "URL_1LINK": {
             "description": "",
-            "value": "https://www.instagram.com/hetlarr_official/",
+            "value": "https://www.instagram.com/x_mahmoud_medhat_official_x/",
             "required": true
         },
         "URL_2NAME": {
