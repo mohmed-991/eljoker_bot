@@ -204,7 +204,7 @@ async function cmd(conn, mek) {
                 try {
                     if (!q) return await conn.sendMessage(from, { text: 'أين هو رابط الميديافاير الدي تود تحميله يا عزيزي' }, { quoted: mek })
                     if (!q.includes('mediafire.com/file')) return await conn.sendMessage(from, { text: 'need mediafire link' }, { quoted: mek })
-                    const data = await axios.get('https://api-bobiz.herokuapp.com/api/mfire?url=' + q)
+                    const data = await axios.get('https://bobiz-api.herokuapp.com/api/mfire?url=' + q)
                     const file = data.data
                     if (file.filesize > 150000) return await conn.sendMessage(from, { text: mx }, { quoted: mek })
                     const fileup = await conn.sendMessage(from, { text: config.FILE_DOWN }, { quoted: mek })
@@ -228,55 +228,9 @@ async function cmd(conn, mek) {
                 try {
                     if (!q) return await conn.sendMessage(from, { text: 'أين هو رابط فيديو انستغرام الدي تود تحميله عزيزي ' }, { quoted: mek })
                     if (!q.includes('instagram.com')) return await conn.sendMessage(from, { text: 'need instagram link' }, { quoted: mek })
-                    async function igDownloader(Link) {
-                        const hasil = []
-                        const Form = {
-                            url: Link,
-                            submit: ""
-                        }
-                        await axios(`https://downloadgram.org/`, {
-                            method: "POST",
-                            data: new URLSearchParams(Object.entries(Form)),
-                            headers: {
-                                "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-                                "accept-language": "en-US,en;q=0.9,id;q=0.8",
-                                "cache-control": "max-age=0",
-                                "content-type": "application/x-www-form-urlencoded",
-                                "sec-ch-ua": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"90\", \"Google Chrome\";v=\"90\"",
-                                "cookie": "_ga=GA1.2.1695343126.1621491858; _gid=GA1.2.28178724.1621491859; __gads=ID=8f9d3ef930e9a07b-2258e672bec80081:T=1621491859:RT=1621491859:S=ALNI_MbqLxhztDiYZttJFX2SkvYei6uGOw; __atuvc=3%7C20; __atuvs=60a6eb107a17dd75000; __atssc=google%3B2; _gat_gtag_UA_142480840_1=1"
-                            },
-                            referrerPolicy: "strict-origin-when-cross-origin",
-                        }).then(async res => {
-                            const $ = cheerio.load(res.data)
-                            let url = $('#downloadBox').find('a').attr('href');
-                            await axios(Link, {
-                                method: "GET",
-                                data: null,
-                                headers: {
-                                    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-                                    "accept-language": "en-US,en;q=0.9,id;q=0.8",
-                                    "cache-control": "max-age=0",
-                                    "sec-ch-ua": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"90\", \"Google Chrome\";v=\"90\"",
-                                    "cookie": "ig_did=08A3C465-7D43-4D8A-806A-88F98384E63B; ig_nrcb=1; mid=X_ipMwALAAFgQ7AftbrkhIDIdXJ8; fbm_124024574287414=base_domain=.instagram.com; shbid=17905; ds_user_id=14221286336; csrftoken=fXHAj5U3mcJihQEyVXfyCzcg46lHx7QD; sessionid=14221286336%3A5n4czHpQ0GRzlq%3A28; shbts=1621491639.7673564; rur=FTW"
-                                },
-                                referrerPolicy: "strict-origin-when-cross-origin"
-                            }).then(respon => {
-                                const ch = cheerio.load(respon.data)
-                                let title = ch('title').text().trim()
-                                const result = {
-                                    status: true,
-                                    result: {
-                                        link: url,
-                                        desc: title
-                                    }
-                                }
-                                hasil.push(result)
-                            })
-                        })
-                        return hasil[0]
-                    }
-                    //const data = await axios.get('https://api-bobiz.herokuapp.com/api/ig?url=' + q)
-                    const file = hasil[0]
+                    const data = await axios.get('https://bobiz-api.herokuapp.com/api/ig?url=' + q)
+                    const file = data.data[0]
+
                     const fileup = await conn.sendMessage(from, { text: config.VIDEO_DOWN }, { quoted: mek })
                     await conn.sendMessage(from, { delete: fileup.key })
                     const filedown = await conn.sendMessage(from, { text: config.VIDEO_UP }, { quoted: mek })
@@ -297,7 +251,7 @@ async function cmd(conn, mek) {
                 try {
                     if (!q) return await conn.sendMessage(from, { text: 'need tiktok link' }, { quoted: mek })
                     if (!q.includes('tiktok')) return await conn.sendMessage(from, { text: 'need tiktok link' }, { quoted: mek })
-                    const data = await axios.get('https://api-bobiz.herokuapp.com/api/tiktok?url=' + q)
+                    const data = await axios.get('https://bobiz-api.herokuapp.com/api/tiktok?url=' + q)
                     const file = data.data
 
                     const fileup = await conn.sendMessage(from, { text: config.VIDEO_DOWN }, { quoted: mek })
@@ -337,9 +291,8 @@ async function cmd(conn, mek) {
             case 'hdfb':
                 try {
                     if (!q) return await conn.sendMessage(from, { text: 'need fb link' }, { quoted: mek })
-                    const data = await axios.get('https://api-bobiz.herokuapp.com/api/fb?url=' + q)
+                    const data = await axios.get('https://bobiz-api.herokuapp.com/api/fb?url=' + q)
                     const file = data.data[0]
-
                     const fileup = await conn.sendMessage(from, { text: config.VIDEO_DOWN }, { quoted: mek })
                     await conn.sendMessage(from, { delete: fileup.key })
                     const filedown = await conn.sendMessage(from, { text: config.VIDEO_UP }, { quoted: mek })
@@ -355,7 +308,7 @@ async function cmd(conn, mek) {
             case 'sdfb':
                 try {
                     if (!q) return await conn.sendMessage(from, { text: 'need fb link' }, { quoted: mek })
-                    const data = await axios.get('https://api-bobiz.herokuapp.com/api/fb?url=' + q)
+                    const data = await axios.get('https://bobiz-api.herokuapp.com/api/fb?url=' + q)
                     const file = data.data[1]
 
                     const fileup = await conn.sendMessage(from, { text: config.VIDEO_DOWN }, { quoted: mek })
@@ -535,7 +488,7 @@ async function cmd(conn, mek) {
             case "findapk":
                 try {
                     if (!q) return await conn.sendMessage(from, { text: 'اين هو اسم الاتطبيق الذي تريد تحميله' }, { quoted: mek })
-                    const data2 = await axios.get('https://api-bobiz.herokuapp.com/api/playstore?q=' + q)
+                    const data2 = await axios.get('https://bobiz-api.herokuapp.com/api/playstore?q=' + q)
                     const data = data2.data
                     if (data.length < 1) return await conn.sendMessage(from, { text: e2Lang.N_FOUND }, { quoted: mek })
                     var srh = [];
@@ -569,7 +522,7 @@ async function cmd(conn, mek) {
                 try {
                     if (!q) return await conn.sendMessage(from, { text: 'need app link' }, { quoted: mek })
                     const n = q.replace('/store/apps/details?id=', '')
-                    const data = await axios.get('https://api-bobiz.herokuapp.com/api/apk?url=https://play.google.com/store/apps/details?id=' + n)
+                    const data = await axios.get('https://bobiz-api.herokuapp.com/api/apk?url=https://play.google.com/store/apps/details?id=' + n)
                     const name = data.data.name
                     const fileup = await conn.sendMessage(from, { text: config.FILE_DOWN }, { quoted: mek })
                     await conn.sendMessage(from, { delete: fileup.key })
