@@ -19,7 +19,7 @@ module.exports = {
     FOOTER: process.env.FOOTER === undefined ? '卍 HETLAR 𝙱𝙾𝚃 卍  instagram.com/hetlarr_official تابعني على الانستغرام ' : process.env.FOOTER,
     CAPTION: process.env.CAPTION === undefined ? '卍 HETLAR 𝙱𝙾𝚃 卍 https://www.instagram.com/x_mahmoud_medhat_official_x/' : process.env.CAPTION,
     ALIVEMSG: process.env.ALIVE_MESSAGE === undefined ? 'default' : process.env.ALIVE_MESSAGE,
-    ALIVE_LOGO: process.env.ALIVE_LOGO === undefined ? 'https://i.ibb.co/6s9bjX8/logo.jpg' : process.env.ALIVE_LOGO,
+    ALIVE_LOGO: process.env.ALIVE_LOGO === undefined ? 'https://i.ibb.co/xJfT5Tj/bot.jpg' : process.env.ALIVE_LOGO,
     SONG_DOWN: process.env.SONG_DOWN === undefined ? '*📥Downloading your song...*' : process.env.SONG_DOWN,
     SONG_UP: process.env.SONG_UP === undefined ? '*📤Uploading your song...*' : process.env.SONG_UP,
     VIDEO_DOWN: process.env.VIDEO_DOWN === undefined ? '*📥Downloading your video...*' : process.env.VIDEO_DOWN,

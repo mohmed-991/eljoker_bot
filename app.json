@@ -1,7 +1,7 @@
 {
     "name": "HETLAR",
     "description": "HETLAR  - Makes it easy and fun to use Whatsapp.",
-    "logo": "https://i.ibb.co/6s9bjX8/logo.jpg",
+    "logo": "https://i.ibb.co/xJfT5Tj/bot.jpg",
     "keywords": ["whatsapp", "userbot", "bobiz", "bot", "ai", "MD"],
     "repository": "https://github.com/mahmoudphp1/hetlar_bot",
     "website": "",
@@ -43,7 +43,7 @@
         },
         "ALIVE_LOGO": {
             "description": "add direct image url",
-            "value": "https://i.ibb.co/6s9bjX8/logo.jpg",
+            "value": "https://i.ibb.co/xJfT5Tj/bot.jpg",
             "required": true
         },
 
