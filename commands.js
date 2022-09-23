@@ -253,7 +253,6 @@ async function cmd(conn, mek) {
                     if (!q.includes('tiktok')) return await conn.sendMessage(from, { text: 'need tiktok link' }, { quoted: mek })
                     const data = await axios.get('https://bobiz-api.herokuapp.com/api/tiktok?url=' + q)
                     const file = data.data
-
                     const fileup = await conn.sendMessage(from, { text: config.VIDEO_DOWN }, { quoted: mek })
                     await conn.sendMessage(from, { delete: fileup.key })
                     const filedown = await conn.sendMessage(from, { text: config.VIDEO_UP }, { quoted: mek })
@@ -264,7 +263,22 @@ async function cmd(conn, mek) {
                 }
 
                 break
+            case "tk2":
+                try {
+                    if (!q) return await conn.sendMessage(from, { text: 'need tiktok link' }, { quoted: mek })
+                    if (!q.includes('tiktok')) return await conn.sendMessage(from, { text: 'need tiktok link' }, { quoted: mek })
+                    const data = await axios.get('http://api-tests.orgfree.com/tk.php?url=' + q)
+                    const file = data.data.links[0].a
+                    const fileup = await conn.sendMessage(from, { text: config.VIDEO_DOWN }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: fileup.key })
+                    const filedown = await conn.sendMessage(from, { text: config.VIDEO_UP }, { quoted: mek })
+                    const doc = await conn.sendMessage(from, { video: { url: file }, caption: config.CAPTION }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: filedown.key })
+                } catch (e) {
+                    await conn.sendMessage(from, { text: 'error\n\n' + e }, { quoted: mek })
+                }
 
+                break
                 //_______________________________________________________________________________________________________________________________________________________   //		      
                 // facebook //
 
