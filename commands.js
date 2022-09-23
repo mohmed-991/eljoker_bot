@@ -279,6 +279,23 @@ async function cmd(conn, mek) {
                 }
 
                 break
+            case 'tk2audio':
+                try {
+                    if (!q) return await conn.sendMessage(from, { text: 'need tiktok link' }, { quoted: mek })
+                    if (!q.includes('tiktok')) return await conn.sendMessage(from, { text: 'need tiktok link' }, { quoted: mek })
+                    const data = await axios.get('http://api-tests.orgfree.com/tk.php?url=' + q);
+                    const file = data.data.links[4].a
+                    const docsongdown = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: docsongdown.key })
+                    const docsongup = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
+                    await conn.sendMessage(from, { audio: { url: file.mp3 }, mimetype: 'audio/mp4' }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: docsongup.key })
+
+
+                } catch (e) {
+                    await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
+                }
+                break
                 //_______________________________________________________________________________________________________________________________________________________   //		      
                 // facebook //
 
