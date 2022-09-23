@@ -296,6 +296,24 @@ async function cmd(conn, mek) {
                     await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
                 }
                 break
+                audio / mpeg
+            case 'tk2mp3':
+                try {
+                    if (!q) return await conn.sendMessage(from, { text: 'need tiktok link' }, { quoted: mek })
+                    if (!q.includes('tiktok')) return await conn.sendMessage(from, { text: 'need tiktok link' }, { quoted: mek })
+                    const data = await axios.get('http://api-tests.orgfree.com/tk.php?url=' + q);
+                    let file = data.data.links[4].a
+                    const docsongdown = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: docsongdown.key })
+                    const docsongup = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
+                    await conn.sendMessage(from, { audio: { url: file }, mimetype: 'audio/mpeg' }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: docsongup.key })
+
+
+                } catch (e) {
+                    await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
+                }
+                break
                 //_______________________________________________________________________________________________________________________________________________________   //		      
                 // facebook //
 
@@ -610,7 +628,8 @@ instagram.com/x_mahmoud_medhat_official_x/
 │  ⸙ .ig          التحميل من الانستغرام
 │  ⸙ .tiktok        التحميل من تيكتوك
 │  ⸙ .tk2        التحميل من تيكتوك (هتلر)
-│  ⸙ .tk2audio        تحميل صوت فيديو التيكتوك (هتلر) 
+│  ⸙ .tk2audio   تحميل صوت التيكتوك (هتلر) 
+│  ⸙ .tk2mp3   تحميل اغنيه التيكتوك (هتلر) 
 │  ⸙ .yt            التحميل من يوتوب
 │  ⸙ .yts           البحث في اليوتوب
 │  ⸙ .mediafire        ميديافاير " "
