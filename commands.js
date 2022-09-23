@@ -421,21 +421,20 @@ async function cmd(conn, mek) {
                 }
                 break
 
+
             case 'ausong2':
                 try {
                     if (!q) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
                     if (!q.includes('youtu')) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
                     const data = await axios.get('https://zenzapis.xyz/downloader/y2mate?apikey=8833301e7333&query=' + q);
-                    let docsong = data.data.result.getAudio
-                    const docsongdown = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
-                    await conn.sendMessage(from, { delete: docsongdown.key })
-                    const docsongup = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
-                    await conn.sendMessage(from, { audio: { url: docsong.mp3 }, mimetype: 'audio/mp4' }, { quoted: mek })
-                    await conn.sendMessage(from, { delete: docsongup.key })
-
-
+                    const file = data.data.result.getAudio
+                    const fileup = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: fileup.key })
+                    const filedown = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
+                    await conn.sendMessage(from, { audio: { url: file.mp3 }, mimetype: 'audio/mp4' }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: filedown.key })
                 } catch (e) {
-                    await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
+                    await conn.sendMessage(from, { text: 'error\n\n' + e }, { quoted: mek })
                 }
                 break
                 // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   		      
