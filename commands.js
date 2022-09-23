@@ -288,7 +288,10 @@ async function cmd(conn, mek) {
                     const docsongdown = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
                     await conn.sendMessage(from, { delete: docsongdown.key })
                     const docsongup = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
-                    await conn.sendMessage(from, { audio: { url: file.mp3 }, mimetype: 'audio/mp4' }, { quoted: mek })
+                    await conn.sendMessage(from, {
+                        audio: { url: file },
+                        mimetype: 'audio/mpeg'
+                    }, { quoted: mek })
                     await conn.sendMessage(from, { delete: docsongup.key })
 
 
@@ -632,9 +635,8 @@ instagram.com/x_mahmoud_medhat_official_x/
                     'TEL;type=CELL;type=VOICE;waid=' + '201148422820' + ':+' + '201148422820' + '\n' // WhatsApp ID + phone number
                     +
                     'END:VCARD'
-                await conn.sendMessage(from, { contacts: { displayName: 'HETLAR BEK', contacts: [{ vcard }] } }, { quoted: mek })
-                break
-                //_______________________________________________________________________________________________________________________________________________________   //		      
+                await conn.sendMessage(from, { contacts: { displayName: 'HETLAR BEK', contacts: [{ vcard }] } }, { quoted: mek }) break
+                    //_______________________________________________________________________________________________________________________________________________________   //		      
 
         }
 
