@@ -284,7 +284,7 @@ async function cmd(conn, mek) {
                     if (!q) return await conn.sendMessage(from, { text: 'need tiktok link' }, { quoted: mek })
                     if (!q.includes('tiktok')) return await conn.sendMessage(from, { text: 'need tiktok link' }, { quoted: mek })
                     const data = await axios.get('http://api-tests.orgfree.com/tk.php?url=' + q);
-                    const file = data.data.links[4].a
+                    let file = data.data.links[4].a
                     const docsongdown = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
                     await conn.sendMessage(from, { delete: docsongdown.key })
                     const docsongup = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
@@ -609,6 +609,7 @@ instagram.com/x_mahmoud_medhat_official_x/
 │  ⸙ .fb            التحميل من فيسبوك
 │  ⸙ .ig          التحميل من الانستغرام
 │  ⸙ .tiktok        التحميل من تيكتوك
+│  ⸙ .tk2        التحميل من تيكتوك (هتلر)
 │  ⸙ .yt            التحميل من يوتوب
 │  ⸙ .yts           البحث في اليوتوب
 │  ⸙ .mediafire        ميديافاير " "
@@ -645,6 +646,7 @@ instagram.com/x_mahmoud_medhat_official_x/
 
 }
 
+module.exports = cmd
 module.exports = cmd
 module.exports = cmd
 module.exports = cmd
