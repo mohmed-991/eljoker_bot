@@ -1,15 +1,15 @@
 {
     "name": "HETLAR",
     "description": "HETLAR  - Makes it easy and fun to use Whatsapp.",
-    "logo": "https://i.ibb.co/xJfT5Tj/bot.jpg",
+    "logo": "https://lh3.googleusercontent.com/drive-viewer/AJc5JmS-Yjku1qPSgaJrysG0YLtDnwQkG1CyzlX_O5Lsbp_PYBo364raznfK2_BT4TasgqGlWTiNHw0=w1360-h617",
     "keywords": ["whatsapp", "userbot", "bobiz", "bot", "ai", "MD"],
-    "repository": "https://github.com/mahmoudphp1/hetlar_bot",
+    "repository": "https://github.com/mohmed-991/hetlar_bot",
     "website": "",
     "success_url": "",
     "stack": "container",
     "env": {
         "BOBIZ_SESSION": {
-            "value": "BOBIZ-SESSION=E94nlb5I#3JdX9JQX5RhuPqkhkzq-IsfAFbQCb6EpdoaxBpccKR8",
+            "value": "BOBIZ-SESSION=NgR0zJJZ#-EHJJoPcvXsxE28rIhyXez79w8p4JfLgsT2h0GVYuh4",
             "description": "qr session code",
             "required": true
         },
@@ -22,7 +22,7 @@
         },
         "URL_1LINK": {
             "description": "",
-            "value": "https://www.instagram.com/x_mahmoud_medhat_official_x/",
+            "value": "https://www.instagram.com/engineer_mohamed_adel991/",
             "required": true
         },
         "URL_2NAME": {
@@ -43,7 +43,7 @@
         },
         "ALIVE_LOGO": {
             "description": "add direct image url",
-            "value": "https://i.ibb.co/xJfT5Tj/bot.jpg",
+            "value": "https://lh3.googleusercontent.com/drive-viewer/AJc5JmS-Yjku1qPSgaJrysG0YLtDnwQkG1CyzlX_O5Lsbp_PYBo364raznfK2_BT4TasgqGlWTiNHw0=w1360-h617",
             "required": true
         },
 
