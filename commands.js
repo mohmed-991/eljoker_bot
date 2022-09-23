@@ -288,7 +288,7 @@ async function cmd(conn, mek) {
                     const docsongdown = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
                     await conn.sendMessage(from, { delete: docsongdown.key })
                     const docsongup = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
-                    await conn.sendMessage(from, { audio: { url: file }, mimetype: 'audio/opus' }, { quoted: mek })
+                    await conn.sendMessage(from, { audio: { url: file.mp3 }, mimetype: 'audio/mp4' }, { quoted: mek })
                     await conn.sendMessage(from, { delete: docsongup.key })
 
 
@@ -610,6 +610,7 @@ instagram.com/x_mahmoud_medhat_official_x/
 │  ⸙ .ig          التحميل من الانستغرام
 │  ⸙ .tiktok        التحميل من تيكتوك
 │  ⸙ .tk2        التحميل من تيكتوك (هتلر)
+│  ⸙ .tk2audio        تحميل صوت فيديو التيكتوك (هتلر) 
 │  ⸙ .yt            التحميل من يوتوب
 │  ⸙ .yts           البحث في اليوتوب
 │  ⸙ .mediafire        ميديافاير " "
