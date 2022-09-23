@@ -314,6 +314,23 @@ async function cmd(conn, mek) {
                     await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
                 }
                 break
+            case 'sc':
+                try {
+                    if (!q) return await conn.sendMessage(from, { text: 'need soundcloud link' }, { quoted: mek })
+                    if (!q.includes('soundcloud')) return await conn.sendMessage(from, { text: 'need soundcloud link' }, { quoted: mek })
+                    const data = await axios.get('https://zenzapis.xyz/downloader/soundcloud?apikey=a098573f47&url=' + q);
+                    let file = data.data.result.url
+                    const docsongdown = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: docsongdown.key })
+                    const docsongup = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
+                    await conn.sendMessage(from, { audio: { url: file }, mimetype: 'audio/mpeg' }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: docsongup.key })
+
+
+                } catch (e) {
+                    await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
+                }
+                break
                 //_______________________________________________________________________________________________________________________________________________________   //		      
                 // facebook //
 
@@ -627,12 +644,16 @@ instagram.com/x_mahmoud_medhat_official_x/
 │  ⸙ .fb            التحميل من فيسبوك
 │  ⸙ .ig          التحميل من الانستغرام
 │  ⸙ .tiktok        التحميل من تيكتوك
+|--------------------------------------------
 │  ⸙ .tk2        التحميل من تيكتوك (هتلر)
 │  ⸙ .tk2audio   تحميل صوت التيكتوك (هتلر) 
 │  ⸙ .tk2mp3   تحميل اغنيه التيكتوك (هتلر) 
+|--------------------------------------------
+|  ⸙ .sc            التحميل من الساوند كلاود
+|--------------------------------------------
 │  ⸙ .yt            التحميل من يوتوب
 │  ⸙ .yts           البحث في اليوتوب
-│  ⸙ .mediafire        ميديافاير " "
+│  ⸙ .mediafire        ميديافاير
 │  ⸙ .stickget         حقوق الملصق
 │  ⸙ .alive      هل البوت شغال ام لا
 │  ⸙ .song           تحميل الموسيقى 
