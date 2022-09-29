@@ -942,8 +942,6 @@ instagram.com/x_mahmoud_medhat_official_x/
                     'TEL;type=CELL;type=VOICE;waid=' + '201148422820' + ':+' + '201148422820' + '\n' // WhatsApp ID + phone number
                     +
                     'END:VCARD'
-                const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
-                await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
                 await conn.sendMessage(from, { contacts: { displayName: 'HETLAR BEK', contacts: [{ vcard }] } }, { quoted: mek });
                 break
                 //_______________________________________________________________________________________________________________________________________________________   //		      
