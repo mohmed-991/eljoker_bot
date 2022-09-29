@@ -655,6 +655,7 @@ async function cmd(conn, mek) {
                     const key = await axios.get('https://pastebin.com/raw/X97zMjVc')
                     const data2 = await axios.get('https://zenzapis.xyz/webzone/apkmody?apikey=' + key.data + '&query=' + q)
                     const data = data2.data
+                    console.log(data)
                     if (data.length < 1) return await conn.sendMessage(from, { text: e2Lang.N_FOUND }, { quoted: mek })
                     var srh = [];
                     for (var i = 0; i < data.length; i++) {
