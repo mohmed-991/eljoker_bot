@@ -692,15 +692,26 @@ async function cmd(conn, mek) {
                     const filedown = await conn.sendMessage(from, { text: config.FILE_UP }, { quoted: mek })
                     const media = request(name).pipe(fs.createWriteStream(path + '/tmp.apk'));
                     const media1 = media.on("finish", () => {
-                        const size = fs.statSync(path).size;
+                        return fs.statSync(path + '/tmp.apk').size;
                     });
                     const bytesToMegaBytes = bytes => bytes / (1024 ** 2);
-                    const size1 = bytesToMegaBytes(size);
+                    const size1 = bytesToMegaBytes(media1);
                     if (size1 > 200) return await conn.sendMessage(from, { text: 'التطبيق الذي تريده حجمه كبير لا يمكن للبوت ان يرسله الحد الاقصى هو 200 ميغا' }, { quoted: mek })
                     await conn.sendMessage(from, { document: { url: name }, mimetype: 'application/vnd.android.package-archive', fileName: name }, { quoted: mek })
                     await conn.sendMessage(from, { delete: filedown.key })
+                    try {
+                        fs.unlinkSync(path + '/tmp.apk')
+                    } catch (err) {
+                        console.error(err)
+                    }
                 } catch (e) {
                     await conn.sendMessage(from, { text: 'تعذر ارسال التطبيق آسف صديقي \n\n' + e }, { quoted: mek })
+                    try {
+                        fs.unlinkSync(path + '/tmp.apk')
+                    } catch (err) {
+                        console.error(err)
+                    }
+
                 }
 
                 break
