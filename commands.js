@@ -863,11 +863,11 @@ async function cmd(conn, mek) {
                     "rowId": prefix + 'mediafire'
                 });
                 const sections = [{
-                    title: "قائمه الاامر",
+                    title: "قائمه الاوامر",
                     rows: srh
                 }]
                 const listMessage = {
-                    text: " \n\n name : " + q + '\n\n ',
+                    text: "قائمه الاوامر يا عزيزي",
                     footer: config.FOOTER,
                     title: '卍 HETLAR 𝙱𝙾𝚃 卍',
                     buttonText: "قائمه الاوامر",
