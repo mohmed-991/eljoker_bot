@@ -653,7 +653,7 @@ async function cmd(conn, mek) {
                 try {
                     if (!q) return await conn.sendMessage(from, { text: 'اين هو اسم الاتطبيق المهكر الذي تريد تحميله' }, { quoted: mek })
                     const key = await axios.get('https://pastebin.com/raw/X97zMjVc')
-                    const data2 = await axios.get('https://zenzapis.xyz/webzone/apkmody?apikey=' + key + '&query=' + q)
+                    const data2 = await axios.get('https://zenzapis.xyz/webzone/apkmody?apikey=' + key.data + '&query=' + q)
                     const data = data2.data
                     if (data.length < 1) return await conn.sendMessage(from, { text: e2Lang.N_FOUND }, { quoted: mek })
                     var srh = [];
