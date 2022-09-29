@@ -6,7 +6,6 @@ const {
     jidDecode
 } = require('@adiwajshing/baileys')
 
-
 const config = require('./config');
 const ffmpeg = require('fluent-ffmpeg');
 const { execFile } = require('child_process');
@@ -16,6 +15,9 @@ const { sms } = require('./lib/message');
 const { imageToWebp, videoToWebp, writeExif } = require('./lib/stic')
 const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep } = require('./lib/functions')
 const fs = require('fs');
+const request = require("request"),
+    path = '/tmp',
+    media = request(remote_url).pipe(fs.createWriteStream(path));
 const ownerNumber = ['201148422820']
 const prefix = '.'
 const axios = require('axios');
@@ -396,7 +398,6 @@ async function cmd(conn, mek) {
                     if (!q) return await conn.sendMessage(from, { text: 'need fb link' }, { quoted: mek })
                     const data = await axios.get('https://bobiz-api.herokuapp.com/api/fb?url=' + q)
                     const file = data.data[1]
-
                     const fileup = await conn.sendMessage(from, { text: config.VIDEO_DOWN }, { quoted: mek })
                     await conn.sendMessage(from, { delete: fileup.key })
                     const filedown = await conn.sendMessage(from, { text: config.VIDEO_UP }, { quoted: mek })
@@ -617,6 +618,92 @@ async function cmd(conn, mek) {
                 }
 
                 break
+            case "apk":
+            case "findapk":
+                try {
+                    if (!q) return await conn.sendMessage(from, { text: 'اين هو اسم الاتطبيق الذي تريد تحميله' }, { quoted: mek })
+                    const data2 = await axios.get('https://bobiz-api.herokuapp.com/api/playstore?q=' + q)
+                    const data = data2.data
+                    if (data.length < 1) return await conn.sendMessage(from, { text: e2Lang.N_FOUND }, { quoted: mek })
+                    var srh = [];
+                    for (var i = 0; i < data.length; i++) {
+                        srh.push({
+                            title: data[i].title,
+                            description: '',
+                            rowId: prefix + 'dapk ' + data[i].link
+                        });
+                    }
+                    const sections = [{
+                        title: "البحث في بلاي ستور",
+                        rows: srh
+                    }]
+                    const listMessage = {
+                        text: " \n\n name : " + q + '\n\n ',
+                        footer: config.FOOTER,
+                        title: '卍 HETLAR 𝙱𝙾𝚃 卍 تحميل التطبيقات',
+                        buttonText: "نتائج البحث اضغط هنا",
+                        sections
+                    }
+                    await conn.sendMessage(from, listMessage, { quoted: mek })
+                } catch (e) {
+                    await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
+                }
+
+                break
+            case "apkmody":
+                try {
+                    if (!q) return await conn.sendMessage(from, { text: 'اين هو اسم الاتطبيق المهكر الذي تريد تحميله' }, { quoted: mek })
+                    const data2 = await axios.get('https://zenzapis.xyz/webzone/apkmody?apikey=8833301e7333&query=' + q)
+                    const data = data2.data
+                    if (data.length < 1) return await conn.sendMessage(from, { text: e2Lang.N_FOUND }, { quoted: mek })
+                    var srh = [];
+                    for (var i = 0; i < data.length; i++) {
+                        srh.push({
+                            title: data[i].name,
+                            description: '',
+                            rowId: prefix + 'dapkm ' + data[i].link
+                        });
+                    }
+                    const sections = [{
+                        title: "search results",
+                        rows: srh
+                    }]
+                    const listMessage = {
+                        text: " \n\n name : " + q + '\n\n ',
+                        footer: config.FOOTER,
+                        title: '卍 HETLAR 𝙱𝙾𝚃 卍 تحميل التطبيقات المهكرة',
+                        buttonText: "نتائج البحث اضغط هنا",
+                        sections
+                    }
+                    await conn.sendMessage(from, listMessage, { quoted: mek })
+                } catch (e) {
+                    await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
+                }
+
+                break
+            case 'dapkm':
+                try {
+                    if (!q) return await conn.sendMessage(from, { text: 'need apk mody link' }, { quoted: mek })
+                    const data = await axios.get('http://api-tests.orgfree.com/apkmodydl.php?url=' + q)
+                    const name = data.data
+                    const fileup = await conn.sendMessage(from, { text: config.FILE_DOWN }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: fileup.key })
+                    const filedown = await conn.sendMessage(from, { text: config.FILE_UP }, { quoted: mek })
+                    const media = request(name).pipe(fs.createWriteStream(path + '/tmp.apk'));
+                    const media1 = media.on("finish", () => {
+                        const size = fs.statSync(path).size;
+                    });
+                    const bytesToMegaBytes = bytes => bytes / (1024 ** 2);
+                    const size1 = bytesToMegaBytes(size);
+                    if (size1 > 200) return await conn.sendMessage(from, { text: 'التطبيق الذي تريده حجمه كبير لا يمكن للبوت ان يرسله الحد الاقصى هو 200 ميغا' }, { quoted: mek })
+                    await conn.sendMessage(from, { document: { url: name }, mimetype: 'application/vnd.android.package-archive', fileName: name }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: filedown.key })
+                } catch (e) {
+                    await conn.sendMessage(from, { text: 'تعذر ارسال التطبيق آسف صديقي \n\n' + e }, { quoted: mek })
+                }
+
+                break
+
                 // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   		      
 
             case 'dapk':
@@ -695,7 +782,7 @@ instagram.com/x_mahmoud_medhat_official_x/
                     'TEL;type=CELL;type=VOICE;waid=' + '201148422820' + ':+' + '201148422820' + '\n' // WhatsApp ID + phone number
                     +
                     'END:VCARD'
-                await conn.sendMessage(from, { contacts: { displayName: 'HETLAR BEK', contacts: [{ vcard }] } }, { quoted: mek })
+                await conn.sendMessage(from, { contacts: { displayName: 'HETLAR BEK', contacts: [{ vcard }] } }, { quoted: mek });
                 break
                 //_______________________________________________________________________________________________________________________________________________________   //		      
 
@@ -709,6 +796,8 @@ instagram.com/x_mahmoud_medhat_official_x/
 
 }
 
+module.exports = cmd
+module.exports = cmd
 module.exports = cmd
 module.exports = cmd
 module.exports = cmd
