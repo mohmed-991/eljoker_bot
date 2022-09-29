@@ -107,6 +107,7 @@ async function cmd(conn, mek) {
                     }
                     await conn.sendMessage(from, buttonMessage)
                 } catch (e) {
+
                     return
                 }
                 break
@@ -238,6 +239,8 @@ async function cmd(conn, mek) {
                     const doc = await conn.sendMessage(from, { video: { url: file.downloadUrl }, caption: config.CAPTION }, { quoted: mek })
                     await conn.sendMessage(from, { delete: filedown.key })
                 } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
                     await conn.sendMessage(from, { text: 'error\n\n' + e }, { quoted: mek })
                 }
 
@@ -260,6 +263,8 @@ async function cmd(conn, mek) {
                     const doc = await conn.sendMessage(from, { video: { url: file.no_watermark }, caption: config.CAPTION }, { quoted: mek })
                     await conn.sendMessage(from, { delete: filedown.key })
                 } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
                     await conn.sendMessage(from, { text: 'error\n\n' + e }, { quoted: mek })
                 }
 
@@ -276,6 +281,8 @@ async function cmd(conn, mek) {
                     const doc = await conn.sendMessage(from, { video: { url: file }, caption: config.CAPTION }, { quoted: mek })
                     await conn.sendMessage(from, { delete: filedown.key })
                 } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
                     await conn.sendMessage(from, { text: 'error\n\n' + e }, { quoted: mek })
                 }
 
@@ -294,6 +301,8 @@ async function cmd(conn, mek) {
 
 
                 } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
                     await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
                 }
                 break
@@ -312,6 +321,8 @@ async function cmd(conn, mek) {
 
 
                 } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
                     await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
                 }
                 break
@@ -329,6 +340,8 @@ async function cmd(conn, mek) {
 
 
                 } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
                     await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
                 }
                 break
@@ -348,6 +361,8 @@ async function cmd(conn, mek) {
 
 
                 } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
                     await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
                 }
                 break
@@ -369,6 +384,8 @@ async function cmd(conn, mek) {
                     await conn.sendMessage(from, { text: msg, footer: config.FOOTER, buttons: buttons, headerType: 4 }, { quoted: mek })
 
                 } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
                     await conn.sendMessage(from, { text: 'error\n\n' + e }, { quoted: mek })
                 }
                 break
@@ -386,6 +403,8 @@ async function cmd(conn, mek) {
                     const doc = await conn.sendMessage(from, { video: { url: file.url }, caption: config.CAPTION }, { quoted: mek })
                     await conn.sendMessage(from, { delete: filedown.key })
                 } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
                     await conn.sendMessage(from, { text: 'error\n\n' + e }, { quoted: mek })
                 }
                 break
@@ -403,6 +422,8 @@ async function cmd(conn, mek) {
                     const doc = await conn.sendMessage(from, { video: { url: file.url }, caption: config.CAPTION }, { quoted: mek })
                     await conn.sendMessage(from, { delete: filedown.key })
                 } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
                     await conn.sendMessage(from, { text: 'error\n\n' + e }, { quoted: mek })
                 }
                 break
@@ -424,6 +445,8 @@ async function cmd(conn, mek) {
                     await conn.sendMessage(from, { image: { url: ytl.thumbnail }, caption: ytl.msg, footer: config.FOOTER, buttons: buttons, headerType: 4 }, { quoted: mek })
 
                 } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
                     await conn.sendMessage(from, { text: 'error\n\n' + e }, { quoted: mek })
                 }
                 break
@@ -443,6 +466,8 @@ async function cmd(conn, mek) {
                     await conn.sendMessage(from, { text: msg, footer: config.FOOTER, buttons: buttons, headerType: 4 }, { quoted: mek })
 
                 } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
                     await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
                 }
                 break
@@ -462,6 +487,8 @@ async function cmd(conn, mek) {
                     await conn.sendMessage(from, { text: msg, footer: config.FOOTER, buttons: buttons, headerType: 4 }, { quoted: mek })
 
                 } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
                     await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
                 }
                 break
@@ -483,6 +510,8 @@ async function cmd(conn, mek) {
 
 
                 } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
                     await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
                 }
                 break
@@ -503,6 +532,8 @@ async function cmd(conn, mek) {
 
 
                 } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
                     await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
                 }
                 break
@@ -520,6 +551,8 @@ async function cmd(conn, mek) {
                     await conn.sendMessage(from, { audio: { url: file.mp3 }, mimetype: 'audio/mp4' }, { quoted: mek })
                     await conn.sendMessage(from, { delete: filedown.key })
                 } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
                     await conn.sendMessage(from, { text: 'error\n\n' + e }, { quoted: mek })
                 }
                 break
@@ -539,6 +572,8 @@ async function cmd(conn, mek) {
 
 
                 } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
                     await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
                 }
                 break
@@ -558,6 +593,8 @@ async function cmd(conn, mek) {
                     await conn.sendMessage(from, { delete: docsongup.key })
 
                 } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
                     await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
                 }
                 break
@@ -750,16 +787,113 @@ async function cmd(conn, mek) {
                     await conn.sendMessage(from, { text: 'error\n\n' + e }, { quoted: mek })
                 }
                 break
-
             case 'menu':
+                var srh = [{
+                    "title": "MENU V2",
+                    "rows": [{
+                            "title": "معلومات عن البوت  ",
+                            "description": "",
+                            "rowId": prefix + 'menuv2'
+                        }, {
+                            "title": "هل البوت يعمل ام لا ",
+                            "description": "",
+                            "rowId": prefix + 'alive'
+                        }, {
+                            "title": "التواصل مع المطور ",
+                            "description": "",
+                            "rowId": prefix + 'owner'
+                        }, {
+                            "title": "عرض قائمه الاوامر",
+                            "description": ".menu1",
+                            "rowId": prefix + 'menu1'
+                        }, {
+                            "title": "مشاهده فيديو البوت",
+                            "description": "",
+                            "rowId": prefix + 'menuv'
+                        }, {
+                            "title": "التحميل من التيكتوك (السيرفر البديل)",
+                            "description": ".tk2 رابط الفيديو",
+                            "rowId": prefix + 'tk2'
+                        }, {
+                            "title": "تحميل صوت فيديو التيكتوك",
+                            "description": ".tk2audio رابط الفيديو",
+                            "rowId": prefix + 'tk2audio'
+                        }, {
+                            "title": "تحميل التطبيقات المهكرة (apk mody)",
+                            "description": ".apkmody اسم التطبيق",
+                            "rowId": prefix + 'apkmody'
+                        }, {
+                            "title": "تحميل اغنيه من الساوند كلاود",
+                            "description": ".sc رابط الاغنيه على الساوند كلاود",
+                            "rowId": prefix + 'sc'
+                        }, {
+                            "title": "صناعه ملصق ",
+                            "description": ".sticker مع الرد على الورة المراد تحويلها ",
+                            "rowId": prefix + 'sticker'
+                        }, {
+                            "title": "صناعه ملصق مع تيير الحقوق ",
+                            "description": ".stickget مع الرد على الورة المراد تحويلها ",
+                            "rowId": prefix + 'stickget'
+                        },
+                        {
+                            "title": "تحميل التطبيقات",
+                            "description": ".apk اسم التطبيق",
+                            "rowId": prefix + 'apk'
+                        }, {
+                            "title": "التحميل من الفيسبوك",
+                            "description": ".fb رابط الفيديو",
+                            "rowId": prefix + 'fb'
+                        }, {
+                            "title": "التحميل من الانستجرام",
+                            "description": ".ig رابط الفيديو",
+                            "rowId": prefix + 'ig'
+                        }, {
+                            "title": "الحث في يوتيوب",
+                            "description": ".yts المراد البحث عنه ",
+                            "rowId": prefix + 'yts'
+                        }, {
+                            "title": "تحميل الموسيقى",
+                            "description": ".song اسم الاغنيه او الرابط",
+                            "rowId": prefix + '.song'
+                        }, {
+                            "title": "التحميل من يوتيوب",
+                            "description": ".yt الرابط او الاسم",
+                            "rowId": prefix + 'yt'
+                        }, {
+                            "title": "التمحيل من ميديا فاير",
+                            "description": ".mediafire الرابط",
+                            "rowId": prefix + 'mediafire'
+                        }
+                    ]
+                }];
+                const sections = [{
+                    title: "قائمه الاامر",
+                    rows: srh
+                }]
+                const listMessage = {
+                    text: " \n\n name : " + q + '\n\n ',
+                    footer: config.FOOTER,
+                    title: '卍 HETLAR 𝙱𝙾𝚃 卍',
+                    buttonText: "قائمه الاوامر",
+                    sections
+                }
+                await conn.sendMessage(from, listMessage, { quoted: mek })
+                break
+            case 'menuv2':
             case 'list':
             case 'panal':
-                const msg1 = `ستايس من اكبر سلسله بوتات الواتساب الي انتشرت الفتره دي 
+                const msg1 = `
+                                    ستايس من اكبر سلسله بوتات الواتساب الي انتشرت الفتره دي
 
-                تابعوا اخبارنا عن طريق https//www.facebook.com/sticeofficial`
+                                    تابعوا اخبارنا عن طريق https: //www.facebook.com/sticeofficial`
                 const msg2 = `الجروب الرسمي لسلسله البوتات
                 http://gg.gg/botchat`
-                const msg = `╭────────────────────╮
+                await conn.sendMessage(from, { text: msg1 }, { quoted: mek })
+                await conn.sendMessage(from, { text: msg2 }, { quoted: mek })
+
+                break
+            case 'menu1':
+                const msg11 = `╭────────────────────╮
 				卍 HETLAR 𝙱𝙾𝚃 卍
 ╰────────────────────╯
 ╭───────────────────────╮
@@ -795,12 +929,9 @@ instagram.com/x_mahmoud_medhat_official_x/
 │  ⸙ .song       تحميل الموسيقى 
 ╰───────────────────────╯
      BY MAHMOUD MEDHAT`
-                await conn.sendMessage(from, { text: msg1 }, { quoted: mek })
-                await conn.sendMessage(from, { text: msg2 }, { quoted: mek })
-                await conn.sendMessage(from, { text: msg }, { quoted: mek })
+                await conn.sendMessage(from, { text: msg11 }, { quoted: mek })
 
-                break
-                // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   		      
+                break // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   		      
             case 'shahoda':
                 const msg9 = `لطالما احبكي هتلر يا عزيزيتي لكنك لم تنتبهي لذلك اتمنى منكما ان تصلحا قلوب بعضكما
                 تحياتي هتلر`
@@ -815,6 +946,8 @@ instagram.com/x_mahmoud_medhat_official_x/
                     'TEL;type=CELL;type=VOICE;waid=' + '201148422820' + ':+' + '201148422820' + '\n' // WhatsApp ID + phone number
                     +
                     'END:VCARD'
+                const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
                 await conn.sendMessage(from, { contacts: { displayName: 'HETLAR BEK', contacts: [{ vcard }] } }, { quoted: mek });
                 break
                 //_______________________________________________________________________________________________________________________________________________________   //		      
@@ -829,6 +962,14 @@ instagram.com/x_mahmoud_medhat_official_x/
 
 }
 
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
 module.exports = cmd
 module.exports = cmd
 module.exports = cmd
