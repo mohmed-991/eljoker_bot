@@ -788,84 +788,80 @@ async function cmd(conn, mek) {
                 }
                 break
             case 'menu':
-                var srh = [{
-                    "title": "MENU V2",
-                    "rows": [{
-                            "title": "معلومات عن البوت  ",
-                            "description": "",
-                            "rowId": prefix + 'menuv2'
-                        }, {
-                            "title": "هل البوت يعمل ام لا ",
-                            "description": "",
-                            "rowId": prefix + 'alive'
-                        }, {
-                            "title": "التواصل مع المطور ",
-                            "description": "",
-                            "rowId": prefix + 'owner'
-                        }, {
-                            "title": "عرض قائمه الاوامر",
-                            "description": ".menu1",
-                            "rowId": prefix + 'menu1'
-                        }, {
-                            "title": "مشاهده فيديو البوت",
-                            "description": "",
-                            "rowId": prefix + 'menuv'
-                        }, {
-                            "title": "التحميل من التيكتوك (السيرفر البديل)",
-                            "description": ".tk2 رابط الفيديو",
-                            "rowId": prefix + 'tk2'
-                        }, {
-                            "title": "تحميل صوت فيديو التيكتوك",
-                            "description": ".tk2audio رابط الفيديو",
-                            "rowId": prefix + 'tk2audio'
-                        }, {
-                            "title": "تحميل التطبيقات المهكرة (apk mody)",
-                            "description": ".apkmody اسم التطبيق",
-                            "rowId": prefix + 'apkmody'
-                        }, {
-                            "title": "تحميل اغنيه من الساوند كلاود",
-                            "description": ".sc رابط الاغنيه على الساوند كلاود",
-                            "rowId": prefix + 'sc'
-                        }, {
-                            "title": "صناعه ملصق ",
-                            "description": ".sticker مع الرد على الورة المراد تحويلها ",
-                            "rowId": prefix + 'sticker'
-                        }, {
-                            "title": "صناعه ملصق مع تيير الحقوق ",
-                            "description": ".stickget مع الرد على الورة المراد تحويلها ",
-                            "rowId": prefix + 'stickget'
-                        },
-                        {
-                            "title": "تحميل التطبيقات",
-                            "description": ".apk اسم التطبيق",
-                            "rowId": prefix + 'apk'
-                        }, {
-                            "title": "التحميل من الفيسبوك",
-                            "description": ".fb رابط الفيديو",
-                            "rowId": prefix + 'fb'
-                        }, {
-                            "title": "التحميل من الانستجرام",
-                            "description": ".ig رابط الفيديو",
-                            "rowId": prefix + 'ig'
-                        }, {
-                            "title": "الحث في يوتيوب",
-                            "description": ".yts المراد البحث عنه ",
-                            "rowId": prefix + 'yts'
-                        }, {
-                            "title": "تحميل الموسيقى",
-                            "description": ".song اسم الاغنيه او الرابط",
-                            "rowId": prefix + '.song'
-                        }, {
-                            "title": "التحميل من يوتيوب",
-                            "description": ".yt الرابط او الاسم",
-                            "rowId": prefix + 'yt'
-                        }, {
-                            "title": "التمحيل من ميديا فاير",
-                            "description": ".mediafire الرابط",
-                            "rowId": prefix + 'mediafire'
-                        }
-                    ]
-                }];
+                var srh = [];
+                srh.push({
+                    "title": "معلومات عن البوت  ",
+                    "description": "",
+                    "rowId": prefix + 'menuv2'
+                }, {
+                    "title": "هل البوت يعمل ام لا ",
+                    "description": "",
+                    "rowId": prefix + 'alive'
+                }, {
+                    "title": "التواصل مع المطور ",
+                    "description": "",
+                    "rowId": prefix + 'owner'
+                }, {
+                    "title": "عرض قائمه الاوامر",
+                    "description": ".menu1",
+                    "rowId": prefix + 'menu1'
+                }, {
+                    "title": "مشاهده فيديو البوت",
+                    "description": "",
+                    "rowId": prefix + 'menuv'
+                }, {
+                    "title": "التحميل من التيكتوك (السيرفر البديل)",
+                    "description": ".tk2 رابط الفيديو",
+                    "rowId": prefix + 'tk2'
+                }, {
+                    "title": "تحميل صوت فيديو التيكتوك",
+                    "description": ".tk2audio رابط الفيديو",
+                    "rowId": prefix + 'tk2audio'
+                }, {
+                    "title": "تحميل التطبيقات المهكرة (apk mody)",
+                    "description": ".apkmody اسم التطبيق",
+                    "rowId": prefix + 'apkmody'
+                }, {
+                    "title": "تحميل اغنيه من الساوند كلاود",
+                    "description": ".sc رابط الاغنيه على الساوند كلاود",
+                    "rowId": prefix + 'sc'
+                }, {
+                    "title": "صناعه ملصق ",
+                    "description": ".sticker مع الرد على الورة المراد تحويلها ",
+                    "rowId": prefix + 'sticker'
+                }, {
+                    "title": "صناعه ملصق مع تيير الحقوق ",
+                    "description": ".stickget مع الرد على الورة المراد تحويلها ",
+                    "rowId": prefix + 'stickget'
+                }, {
+                    "title": "تحميل التطبيقات",
+                    "description": ".apk اسم التطبيق",
+                    "rowId": prefix + 'apk'
+                }, {
+                    "title": "التحميل من الفيسبوك",
+                    "description": ".fb رابط الفيديو",
+                    "rowId": prefix + 'fb'
+                }, {
+                    "title": "التحميل من الانستجرام",
+                    "description": ".ig رابط الفيديو",
+                    "rowId": prefix + 'ig'
+                }, {
+                    "title": "الحث في يوتيوب",
+                    "description": ".yts المراد البحث عنه ",
+                    "rowId": prefix + 'yts'
+                }, {
+                    "title": "تحميل الموسيقى",
+                    "description": ".song اسم الاغنيه او الرابط",
+                    "rowId": prefix + '.song'
+                }, {
+                    "title": "التحميل من يوتيوب",
+                    "description": ".yt الرابط او الاسم",
+                    "rowId": prefix + 'yt'
+                }, {
+                    "title": "التمحيل من ميديا فاير",
+                    "description": ".mediafire الرابط",
+                    "rowId": prefix + 'mediafire'
+                });
                 const sections = [{
                     title: "قائمه الاامر",
                     rows: srh
