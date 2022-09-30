@@ -382,7 +382,7 @@ async function cmd(conn, mek) {
                 break
             case 'send':
                 try {
-                    conso.log(q);
+                    console.log(q);
                     // let r = (Math.random() + 1).toString(36).substring(7);
                     // const rand = r + '.mp3'
                     const media = request(q).pipe(fs.createWriteStream('/tmp/' + f));
