@@ -354,27 +354,27 @@ async function cmd(conn, mek) {
                     const file1 = data2.data['videoInfo']['downloadInfoList']
                     console.log(file1.length)
                     if (file1.length < 1) return await conn.sendMessage(from, { text: e2Lang.N_FOUND }, { quoted: mek });
-                    var srh1 = [];
+                    var srh = [];
                     for (var i = 0; i < file1.length; i++) {
-                        srh1.push({
+                        srh.push({
                             title: data2.data['videoInfo']['downloadInfoList'][i]['formatExt'] + ' - ' + data2.data['videoInfo']['downloadInfoList'][i]['formatAlias'],
                             description: '',
                             rowId: prefix + 'send' + data2.data['videoInfo']['downloadInfoList'][i].partList[0]['urlList'][0]
                         });
                     }
-                    const sections1 = [{
+                    const sections = [{
                         title: "search results 1",
-                        rows: srh1
+                        rows: srh
                     }]
-                    const listMessage1 = {
+                    const listMessage = {
                             text: " name : " + data2.data['videoInfo']["title"],
                             footer: config.FOOTER,
                             title: '卍 HETLAR 𝙱𝙾𝚃 卍 التحميل من اليوتيوب',
                             buttonText: "النتائج اضغط هنا",
-                            sections1
+                            sections
                         }
                         // console.log(listMessage1)
-                    await conn.sendMessage(from, listMessage1, { quoted: mek })
+                    await conn.sendMessage(from, listMessage, { quoted: mek })
                 } catch (e) {
                     const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
                     await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
