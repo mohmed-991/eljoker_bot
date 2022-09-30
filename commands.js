@@ -359,7 +359,9 @@ async function cmd(conn, mek) {
                         srh.push({
                             title: data2.data['videoInfo']['downloadInfoList'][i]['formatExt'] + ' - ' + data2.data['videoInfo']['downloadInfoList'][i]['formatAlias'],
                             description: '',
-                            rowId: prefix + 'send' + " " + data2.data['videoInfo']['downloadInfoList'][i].partList[0]['urlList'][0] + '-' + data2.data['videoInfo']['downloadInfoList'][i]['formatExt'] + '-' + title
+                            rowId: await conn.sendMessage(from, {
+                                text: prefix + 'send' + " " + data2.data['videoInfo']['downloadInfoList'][i].partList[0]['urlList'][0] + '-' + data2.data['videoInfo']['downloadInfoList'][i]['formatExt'] + '-' + title
+                            }, { quoted: mek })
                         });
                     }
                     const sections = [{
