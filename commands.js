@@ -387,7 +387,7 @@ async function cmd(conn, mek) {
                     const fileup = await conn.sendMessage(from, { text: config.FILE_DOWN }, { quoted: mek })
                     await conn.sendMessage(from, { delete: fileup.key })
                     const filedown = await conn.sendMessage(from, { text: config.FILE_UP }, { quoted: mek })
-                    const media = request.get(q).on('error', function(err) { console.log(err) }).pipe(fs.createWriteStream('2.weba'));
+                    const media = await request.get(q).on('error', function(err) { console.log(err) }).pipe(fs.createWriteStream('2.weba'));
                     const media1 = media.on("finish", () => {
                         return fs.statSync(+'2.weba').size;
                     });
