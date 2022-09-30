@@ -354,6 +354,7 @@ async function cmd(conn, mek) {
                     const file1 = data2.data['videoInfo']['downloadInfoList']
                     if (file1.length < 1) return await conn.sendMessage(from, { text: e2Lang.N_FOUND }, { quoted: mek });
                     var srh = [];
+                    const title = data2.data['videoInfo']["title"]
                     for (var i = 0; i < file1.length; i++) {
                         srh.push({
                             title: data2.data['videoInfo']['downloadInfoList'][i]['formatExt'] + ' - ' + data2.data['videoInfo']['downloadInfoList'][i]['formatAlias'],
@@ -382,29 +383,32 @@ async function cmd(conn, mek) {
                 break
             case 'send':
                 try {
-                    // let r = (Math.random() + 1).toString(36).substring(7);
-                    // const rand = r + '.mp3'
-                    const path = './tmp'
-                    const media0 = request(q).pipe(fs.createWriteStream(path + '/tmp.mp3'));
-                    const media01 = media0.on("finish", () => {
+                    if (!q) return await conn.sendMessage(from, { text: 'need file link' }, { quoted: mek })
+                    const fileup = await conn.sendMessage(from, { text: config.FILE_DOWN }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: fileup.key })
+                    const filedown = await conn.sendMessage(from, { text: config.FILE_UP }, { quoted: mek })
+                    const media = request(q).pipe(fs.createWriteStream(path + '/tmp.mp3'));
+                    const media1 = media.on("finish", () => {
                         return fs.statSync(path + '/tmp.mp3').size;
                     });
-                    console.log(media01);
-                    await conn.sendMessage(from, { text: media01 + '\n' + media0 }, { quoted: mek })
-                        // try {
-                        //     fs.unlinkSync(path + '/tmp.mp3')
-                        // } catch (err) {
-                        //     console.error(err)
-                        // }
-                        // const docsongdown = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
-                        // await conn.sendMessage(from, { delete: docsongdown.key })
-                        // const docsongup = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
-                        // await conn.sendMessage(from, { audio: { url: file }, mimetype: 'audio/mpeg' }, { quoted: mek })
-                        // await conn.sendMessage(from, { delete: docsongup.key })
+                    const bytesToMegaBytes = bytes => bytes / (1024 ** 2);
+                    const size1 = bytesToMegaBytes(media1);
+                    if (size1 > 200) return await conn.sendMessage(from, { text: 'التطبيق الذي تريده حجمه كبير لا يمكن للبوت ان يرسله الحد الاقصى هو 200 ميغا' }, { quoted: mek })
+                    await conn.sendMessage(from, { document: { url: q + '.mp3' }, mimetype: 'audio/mpeg', fileName: 'tmp.mp3' }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: filedown.key })
+                    try {
+                        fs.unlinkSync(path + '/tmp.mp3')
+                    } catch (err) {
+                        console.error(err)
+                    }
                 } catch (e) {
-                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
-                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
-                    await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
+                    await conn.sendMessage(from, { text: 'تعذر ارسال التطبيق آسف صديقي \n\n' + e }, { quoted: mek })
+                    try {
+                        fs.unlinkSync(path + '/tmp.mp3')
+                    } catch (err) {
+                        console.error(err)
+                    }
+
                 }
                 break
                 //_______________________________________________________________________________________________________________________________________________________   //		      
@@ -694,38 +698,7 @@ async function cmd(conn, mek) {
                 }
 
                 break
-            case "apk":
-            case "findapk":
-                try {
-                    if (!q) return await conn.sendMessage(from, { text: 'اين هو اسم الاتطبيق الذي تريد تحميله' }, { quoted: mek })
-                    const data2 = await axios.get('https://bobiz-api.herokuapp.com/api/playstore?q=' + q)
-                    const data = data2.data
-                    if (data.length < 1) return await conn.sendMessage(from, { text: e2Lang.N_FOUND }, { quoted: mek })
-                    var srh = [];
-                    for (var i = 0; i < data.length; i++) {
-                        srh.push({
-                            title: data[i].title,
-                            description: '',
-                            rowId: prefix + 'dapk ' + data[i].link
-                        });
-                    }
-                    const sections = [{
-                        title: "البحث في بلاي ستور",
-                        rows: srh
-                    }]
-                    const listMessage = {
-                        text: " \n\n name : " + q + '\n\n ',
-                        footer: config.FOOTER,
-                        title: '卍 HETLAR 𝙱𝙾𝚃 卍 تحميل التطبيقات',
-                        buttonText: "نتائج البحث اضغط هنا",
-                        sections
-                    }
-                    await conn.sendMessage(from, listMessage, { quoted: mek })
-                } catch (e) {
-                    await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
-                }
 
-                break
             case "apkmody":
                 try {
                     if (!q) return await conn.sendMessage(from, { text: 'اين هو اسم الاتطبيق المهكر الذي تريد تحميله' }, { quoted: mek })
