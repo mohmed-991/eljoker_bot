@@ -400,10 +400,11 @@ async function cmd(conn, mek) {
                         // const size1 = bytesToMegaBytes(media1);
                         // await conn.sendMessage(from, { text: size1 }, { quoted: mek })
                         // if (size1 > 200) return await conn.sendMessage(from, { text: 'الملف الذي تريده حجمه كبير لا يمكن للبوت ان يرسله الحد الاقصى هو 200 ميغا' }, { quoted: mek })
+                    console.log(title + '.' + ext)
                     await conn.sendMessage(from, { document: { url: q }, fileName: title + '.' + ext }, { quoted: mek })
                     await conn.sendMessage(from, { delete: filedown.key })
                     try {
-                        fs.unlinkSync(path + 'tmp' + ext)
+                        fs.unlinkSync(path + 'tmp' + '.' + ext)
                     } catch (err) {
                         console.error(err)
                     }
