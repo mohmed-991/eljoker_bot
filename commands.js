@@ -12,6 +12,7 @@ const { execFile } = require('child_process');
 const cwebp = require('cwebp-bin');
 const { exec } = require('child_process');
 const { sms } = require('./lib/message');
+const random = require('random');
 const { imageToWebp, videoToWebp, writeExif } = require('./lib/stic')
 const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep } = require('./lib/functions')
 const fs = require('fs');
@@ -353,11 +354,19 @@ async function cmd(conn, mek) {
                     const file1 = data1.data.result.getAudio
                     const data = await axios.get('http://api-tests.orgfree.com/tinyext.php?url=' + file1);
                     let file = data.data
-                    const docsongdown = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
-                    await conn.sendMessage(from, { delete: docsongdown.key })
-                    const docsongup = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
-                    await conn.sendMessage(from, { audio: { url: file }, mimetype: 'audio/mpeg' }, { quoted: mek })
-                    await conn.sendMessage(from, { delete: docsongup.key })
+                    let r = (Math.random() + 1).toString(36).substring(7);
+                    const rand = r + '.mp3'
+                    const media = request(file).pipe(fs.createWriteStream('/tmp/' + file));
+                    console.log(media);
+                    // const media1 = media.on("finish", () => {
+                    //     return exec();
+                    // });
+                    // console.log(media1)
+                    // const docsongdown = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
+                    // await conn.sendMessage(from, { delete: docsongdown.key })
+                    // const docsongup = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
+                    // await conn.sendMessage(from, { audio: { url: file }, mimetype: 'audio/mpeg' }, { quoted: mek })
+                    // await conn.sendMessage(from, { delete: docsongup.key })
 
 
                 } catch (e) {
