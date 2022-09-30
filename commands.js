@@ -10,7 +10,7 @@ const config = require('./config');
 const ffmpeg = require('fluent-ffmpeg');
 const { execFile } = require('child_process');
 const cwebp = require('cwebp-bin');
-const { exec } = require('child_process')
+const { exec } = require('child_process');
 const { sms } = require('./lib/message');
 const { imageToWebp, videoToWebp, writeExif } = require('./lib/stic')
 const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep } = require('./lib/functions')
@@ -887,6 +887,16 @@ async function cmd(conn, mek) {
                 await conn.sendMessage(from, { text: msg1 }, { quoted: mek })
                 await conn.sendMessage(from, { text: msg2 }, { quoted: mek })
 
+                break
+            case 'update':
+                if (isOwner) {
+                    await exec(`dir`, function(error, stdout, stderr) {
+                        console.log(stdout);
+                        conn.sendMessage(from, { text: stdout }, { quoted: mek });
+                    });
+                } else {
+                    conn.sendMessage(from, { text: `iam sorry you aren,t owner` }, { quoted: mek });
+                }
                 break
             case 'menu1':
                 const msg11 = `╭────────────────────╮
