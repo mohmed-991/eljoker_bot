@@ -359,11 +359,11 @@ async function cmd(conn, mek) {
                         srh.push({
                             title: data2.data['videoInfo']['downloadInfoList'][i]['formatExt'] + ' - ' + data2.data['videoInfo']['downloadInfoList'][i]['formatAlias'],
                             description: '',
-                            rowId: prefix + 'send' + " " + data2.data['videoInfo']['downloadInfoList'][i].partList[0]['urlList'][0]
+                            rowId: prefix + 'send' + " " + data2.data['videoInfo']['downloadInfoList'][i].partList[0]['urlList'][0] + '-' + data2.data['videoInfo']['downloadInfoList'][i]['formatExt'] + '-' + title
                         });
                     }
                     const sections = [{
-                        title: "search results 1",
+                        title: "search results",
                         rows: srh
                     }]
                     const listMessage = {
@@ -383,32 +383,34 @@ async function cmd(conn, mek) {
                 break
             case 'send':
                 try {
-                    if (!q) return await conn.sendMessage(from, { text: 'need file link' }, { quoted: mek })
+                    if (!q) return await conn.sendMessage(from, { text: 'need file link -ext -title' }, { quoted: mek })
+                    const ext = q.split('-')[1];
+                    const title = q.split('-')[2];
                     const fileup = await conn.sendMessage(from, { text: config.FILE_DOWN }, { quoted: mek })
                     await conn.sendMessage(from, { delete: fileup.key })
                     const filedown = await conn.sendMessage(from, { text: config.FILE_UP }, { quoted: mek })
-                        // const media = await request.get(q).on('error', function(err) { console.log(err) }).pipe(fs.createWriteStream('2.mp3'));
-                        // const media1 = media.on("finish", () => {
-                        //     return fs.statSync(+'2.weba').size;
-                        // });
-                        // const file = './2.weba'
-                        // const doc = await conn.sendMessage(from, { document: { url: file } }, { quoted: mek })
-                        // await exec(`ffmpeg -i 2.weba -vn -ar 44100 -ac 2 -b:a 192k 2.mp3`);
-                        // const bytesToMegaBytes = bytes => bytes / (1024 ** 2);
-                        // const size1 = bytesToMegaBytes(media1);
-                        // await conn.sendMessage(from, { text: size1 }, { quoted: mek })
-                        // if (size1 > 200) return await conn.sendMessage(from, { text: 'التطبيق الذي تريده حجمه كبير لا يمكن للبوت ان يرسله الحد الاقصى هو 200 ميغا' }, { quoted: mek })
-                    await conn.sendMessage(from, { document: { url: q }, fileName: 'tmp.mp3' }, { quoted: mek })
+                    const media = await request.get(q).on('error', function(err) { console.log(err) }).pipe(fs.createWriteStream('tmp' + ext));
+                    const media1 = media.on("finish", () => {
+                        return fs.statSync('tmp' + ext).size;
+                    });
+                    // const file = './2.weba'
+                    // const doc = await conn.sendMessage(from, { document: { url: file } }, { quoted: mek })
+                    // await exec(`ffmpeg -i 2.weba -vn -ar 44100 -ac 2 -b:a 192k 2.mp3`);
+                    const bytesToMegaBytes = bytes => bytes / (1024 ** 2);
+                    const size1 = bytesToMegaBytes(media1);
+                    // await conn.sendMessage(from, { text: size1 }, { quoted: mek })
+                    if (size1 > 200) return await conn.sendMessage(from, { text: 'الملف الذي تريده حجمه كبير لا يمكن للبوت ان يرسله الحد الاقصى هو 200 ميغا' }, { quoted: mek })
+                    await conn.sendMessage(from, { document: { url: q }, fileName: title + ext }, { quoted: mek })
                     await conn.sendMessage(from, { delete: filedown.key })
                     try {
-                        fs.unlinkSync(path + '/tmp.mp3')
+                        fs.unlinkSync(path + 'tmp' + ext)
                     } catch (err) {
                         console.error(err)
                     }
                 } catch (e) {
                     await conn.sendMessage(from, { text: 'تعذر ارسال التطبيق آسف صديقي \n\n' + e }, { quoted: mek })
                     try {
-                        fs.unlinkSync(path + '/tmp.mp3')
+                        fs.unlinkSync(path + 'tmp' + ext)
                     } catch (err) {
                         console.error(err)
                     }
@@ -719,7 +721,7 @@ async function cmd(conn, mek) {
                         srh.push({
                             title: data[i].name,
                             description: '',
-                            rowId: prefix + 'dapkm ' + data[i].link
+                            rowId: prefix + 'dapkm ' + data[i].link + '-' + data[i].name
                         });
                     }
                     const sections = [{
@@ -741,7 +743,8 @@ async function cmd(conn, mek) {
                 break
             case 'dapkm':
                 try {
-                    if (!q) return await conn.sendMessage(from, { text: 'need apk mody link' }, { quoted: mek })
+                    if (!q) return await conn.sendMessage(from, { text: 'need apk mody link -title' }, { quoted: mek })
+                    const title = q.split('-')[1];
                     const data = await axios.get('http://api-tests.orgfree.com/apkmodydl.php?url=' + q)
                     const name = data.data
                     const fileup = await conn.sendMessage(from, { text: config.FILE_DOWN }, { quoted: mek })
