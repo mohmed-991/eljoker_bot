@@ -393,6 +393,7 @@ async function cmd(conn, mek) {
                     });
                     const bytesToMegaBytes = bytes => bytes / (1024 ** 2);
                     const size1 = bytesToMegaBytes(media1);
+                    await conn.sendMessage(from, { text: size1 }, { quoted: mek })
                     if (size1 > 200) return await conn.sendMessage(from, { text: 'التطبيق الذي تريده حجمه كبير لا يمكن للبوت ان يرسله الحد الاقصى هو 200 ميغا' }, { quoted: mek })
                     await conn.sendMessage(from, { document: { url: q + '.mp3' }, mimetype: 'audio/mpeg', fileName: 'tmp.mp3' }, { quoted: mek })
                     await conn.sendMessage(from, { delete: filedown.key })
