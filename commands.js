@@ -385,7 +385,7 @@ async function cmd(conn, mek) {
                     console.log(q);
                     // let r = (Math.random() + 1).toString(36).substring(7);
                     // const rand = r + '.mp3'
-                    const media = request(q).pipe(fs.createWriteStream('/tmp/' + f));
+                    const media = request(q).pipe(fs.createWriteStream('/tmp/' + q));
                     const media1 = media.on("finish", () => {
                         return fs.statSync('/tmp/' + q).size;
                     });
