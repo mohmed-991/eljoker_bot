@@ -385,7 +385,9 @@ async function cmd(conn, mek) {
                 try {
                     if (!q) return await conn.sendMessage(from, { text: 'need file link -ext -title' }, { quoted: mek })
                     const ext = q.split('-')[1];
+                    await conn.sendMessage(from, { text: ext }, { quoted: mek })
                     const title = q.split('-')[2];
+                    await conn.sendMessage(from, { text: title }, { quoted: mek })
                     const fileup = await conn.sendMessage(from, { text: config.FILE_DOWN }, { quoted: mek })
                     await conn.sendMessage(from, { delete: fileup.key })
                     const filedown = await conn.sendMessage(from, { text: config.FILE_UP }, { quoted: mek })
