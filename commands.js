@@ -366,12 +366,13 @@ async function cmd(conn, mek) {
                         rows: srh1
                     }]
                     const listMessage1 = {
-                        text: " \n\n name : " + file1["title"] + '\n\n ',
+                        text: " name : " + file1["title"],
                         footer: config.FOOTER,
                         title: '卍 HETLAR 𝙱𝙾𝚃 卍 التحميل من اليوتيوب',
                         buttonText: "النتائج اضغط هنا",
                         sections1
                     }
+                    console.log(listMessage1)
                     await conn.sendMessage(from, listMessage1, { quoted: mek })
                 } catch (e) {
                     const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
