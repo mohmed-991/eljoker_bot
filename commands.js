@@ -367,7 +367,7 @@ async function cmd(conn, mek) {
                         rows: srh1
                     }]
                     const listMessage1 = {
-                            text: " name : " + file1["title"],
+                            text: " name : " + data2.data['videoInfo']["title"],
                             footer: config.FOOTER,
                             title: '卍 HETLAR 𝙱𝙾𝚃 卍 التحميل من اليوتيوب',
                             buttonText: "النتائج اضغط هنا",
