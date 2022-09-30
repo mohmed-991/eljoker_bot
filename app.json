@@ -9,7 +9,7 @@
     "stack": "container",
     "env": {
         "BOBIZ_SESSION": {
-            "value": "BOBIZ-SESSION=NgR0zJJZ#-EHJJoPcvXsxE28rIhyXez79w8p4JfLgsT2h0GVYuh4",
+            "value": "BOBIZ-SESSION=ExhlTYIS#UeUa148IQuKUn57olXAi_AGCs7elUCBNhNN9F0234mc",
             "description": "qr session code",
             "required": true
         },
