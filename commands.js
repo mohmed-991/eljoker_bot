@@ -389,17 +389,17 @@ async function cmd(conn, mek) {
                     const fileup = await conn.sendMessage(from, { text: config.FILE_DOWN }, { quoted: mek })
                     await conn.sendMessage(from, { delete: fileup.key })
                     const filedown = await conn.sendMessage(from, { text: config.FILE_UP }, { quoted: mek })
-                    const media = await request.get(q).on('error', function(err) { console.log(err) }).pipe(fs.createWriteStream('tmp' + ext));
-                    const media1 = media.on("finish", () => {
-                        return fs.statSync('tmp' + ext).size;
-                    });
-                    // const file = './2.weba'
-                    // const doc = await conn.sendMessage(from, { document: { url: file } }, { quoted: mek })
-                    // await exec(`ffmpeg -i 2.weba -vn -ar 44100 -ac 2 -b:a 192k 2.mp3`);
-                    const bytesToMegaBytes = bytes => bytes / (1024 ** 2);
-                    const size1 = bytesToMegaBytes(media1);
-                    // await conn.sendMessage(from, { text: size1 }, { quoted: mek })
-                    if (size1 > 200) return await conn.sendMessage(from, { text: 'الملف الذي تريده حجمه كبير لا يمكن للبوت ان يرسله الحد الاقصى هو 200 ميغا' }, { quoted: mek })
+                        // const media = await request.get(q).on('error', function(err) { console.log(err) }).pipe(fs.createWriteStream('tmp' + ext));
+                        // const media1 = media.on("finish", () => {
+                        //     return fs.statSync('tmp' + ext).size;
+                        // });
+                        // const file = './2.weba'
+                        // const doc = await conn.sendMessage(from, { document: { url: file } }, { quoted: mek })
+                        // await exec(`ffmpeg -i 2.weba -vn -ar 44100 -ac 2 -b:a 192k 2.mp3`);
+                        // const bytesToMegaBytes = bytes => bytes / (1024 ** 2);
+                        // const size1 = bytesToMegaBytes(media1);
+                        // await conn.sendMessage(from, { text: size1 }, { quoted: mek })
+                        // if (size1 > 200) return await conn.sendMessage(from, { text: 'الملف الذي تريده حجمه كبير لا يمكن للبوت ان يرسله الحد الاقصى هو 200 ميغا' }, { quoted: mek })
                     await conn.sendMessage(from, { document: { url: q }, fileName: title + ext }, { quoted: mek })
                     await conn.sendMessage(from, { delete: filedown.key })
                     try {
