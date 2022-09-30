@@ -359,9 +359,7 @@ async function cmd(conn, mek) {
                         srh.push({
                             title: data2.data['videoInfo']['downloadInfoList'][i]['formatExt'] + ' - ' + data2.data['videoInfo']['downloadInfoList'][i]['formatAlias'],
                             description: '',
-                            rowId: await conn.sendMessage(from, {
-                                text: prefix + 'send' + " " + data2.data['videoInfo']['downloadInfoList'][i].partList[0]['urlList'][0] + '-' + data2.data['videoInfo']['downloadInfoList'][i]['formatExt'] + '-' + title
-                            }, { quoted: mek })
+                            rowId: prefix + 'send' + " " + data2.data['videoInfo']['downloadInfoList'][i].partList[0]['urlList'][0] + '_@' + data2.data['videoInfo']['downloadInfoList'][i]['formatExt'] + '_@' + title
                         });
                     }
                     const sections = [{
@@ -386,9 +384,9 @@ async function cmd(conn, mek) {
             case 'send':
                 try {
                     if (!q) return await conn.sendMessage(from, { text: 'need file link -ext -title' }, { quoted: mek })
-                    const ext = q.split('-')[1];
+                    const ext = q.split('_@')[1];
                     await conn.sendMessage(from, { text: ext }, { quoted: mek })
-                    const title = q.split('-')[2];
+                    const title = q.split('_@')[2];
                     await conn.sendMessage(from, { text: title }, { quoted: mek })
                     const fileup = await conn.sendMessage(from, { text: config.FILE_DOWN }, { quoted: mek })
                     await conn.sendMessage(from, { delete: fileup.key })
