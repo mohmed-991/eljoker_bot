@@ -749,8 +749,7 @@ async function cmd(conn, mek) {
                     if (!q) return await conn.sendMessage(from, { text: 'need apk mody link -title' }, { quoted: mek })
                     const title = q.split('@_')[1];
                     const data = await axios.get('http://api-tests.orgfree.com/apkmodydl.php?url=' + q.split('@_')[0])
-                    await conn.sendMessage(from, { text: q.split('@_')[0] }, { quoted: mek })
-                    await conn.sendMessage(from, { text: data }, { quoted: mek })
+                    await conn.sendMessage(from, { text: q.split('@_')[1] }, { quoted: mek })
                     const name = data.data
                     const fileup = await conn.sendMessage(from, { text: config.FILE_DOWN }, { quoted: mek })
                     await conn.sendMessage(from, { delete: fileup.key })
