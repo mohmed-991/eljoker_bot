@@ -353,11 +353,14 @@ async function cmd(conn, mek) {
                     const data1 = await axios.get('https://zenzapis.xyz/downloader/ytshorts?apikey=8833301e7333&url=' + q);
                     const file1 = data1.data.result.getAudio
                     const data = await axios.get('http://api-tests.orgfree.com/tinyext.php?url=' + file1);
-                    let file = data.data
+                    const file = data.data
                     let r = (Math.random() + 1).toString(36).substring(7);
                     const rand = r + '.mp3'
                     const media = request(file).pipe(fs.createWriteStream('/tmp/' + file));
-                    console.log(media);
+                    const media1 = media.on("finish", () => {
+                        return fs.statSync('/tmp/' + file).size;
+                    });
+                    console.log(media1);
                     // const media1 = media.on("finish", () => {
                     //     return exec();
                     // });
