@@ -387,15 +387,16 @@ async function cmd(conn, mek) {
                     const fileup = await conn.sendMessage(from, { text: config.FILE_DOWN }, { quoted: mek })
                     await conn.sendMessage(from, { delete: fileup.key })
                     const filedown = await conn.sendMessage(from, { text: config.FILE_UP }, { quoted: mek })
-                    const media = request.get(q).on('error', function(err) { console.log(err) }).pipe(fs.createWriteStream('2.mp3'));
+                    const media = request.get(q).on('error', function(err) { console.log(err) }).pipe(fs.createWriteStream('2.weba'));
                     const media1 = media.on("finish", () => {
-                        return fs.statSync(+'2.mp3').size;
+                        return fs.statSync(+'2.weba').size;
                     });
+                    exec(`ffmpeg -i 2.weba -vn -ar 44100 -ac 2 -b:a 192k 2.mp3`);
                     const bytesToMegaBytes = bytes => bytes / (1024 ** 2);
                     const size1 = bytesToMegaBytes(media1);
                     await conn.sendMessage(from, { text: size1 }, { quoted: mek })
                     if (size1 > 200) return await conn.sendMessage(from, { text: 'التطبيق الذي تريده حجمه كبير لا يمكن للبوت ان يرسله الحد الاقصى هو 200 ميغا' }, { quoted: mek })
-                    await conn.sendMessage(from, { document: { url: q }, mimetype: 'audio/mpeg', fileName: 'tmp.mp3' }, { quoted: mek })
+                    await conn.sendMessage(from, { document: { url: './2.mp3' }, mimetype: 'audio/mpeg', fileName: 'tmp.mp3' }, { quoted: mek })
                     await conn.sendMessage(from, { delete: filedown.key })
                     try {
                         fs.unlinkSync(path + '/tmp.mp3')
