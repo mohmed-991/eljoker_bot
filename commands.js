@@ -384,14 +384,15 @@ async function cmd(conn, mek) {
                 try {
                     // let r = (Math.random() + 1).toString(36).substring(7);
                     // const rand = r + '.mp3'
-                    const media = request(q).pipe(fs.createWriteStream('./tmp/' + q));
+                    const path = './tmp'
+                    const media = request(q).pipe(fs.createWriteStream(path + q));
                     const media1 = media.on("finish", () => {
-                        return fs.statSync('./tmp/' + q).size;
+                        return fs.statSync(path + q).size;
                     });
                     console.log(media1);
                     await conn.sendMessage(from, { text: media1 }, { quoted: mek })
                     try {
-                        fs.unlinkSync('./tmp/' + q)
+                        fs.unlinkSync(path + q)
                     } catch (err) {
                         console.error(err)
                     }
