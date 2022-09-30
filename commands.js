@@ -353,9 +353,9 @@ async function cmd(conn, mek) {
                     const data2 = await axios.get('https://api.snappea.com/v1/video/details?url=' + q);
                     const file1 = data2.data['videoInfo']
                     if (file1.length < 1) return await conn.sendMessage(from, { text: e2Lang.N_FOUND }, { quoted: mek });
-                    var srh = [];
+                    var srh1 = [];
                     for (var i = 0; i < file1.length; i++) {
-                        srh.push({
+                        srh1.push({
                             title: data2.data['videoInfo']['downloadInfoList'][i]['formatExt'] + ' - ' + data2.data['videoInfo']['downloadInfoList'][i]['formatAlias'],
                             description: '',
                             rowId: prefix + 'send' + data2.data['videoInfo']['downloadInfoList'][i].partList[0]['urlList'][0]
@@ -363,16 +363,16 @@ async function cmd(conn, mek) {
                     }
                     const sections = [{
                         title: "search results",
-                        rows: srh
+                        rows: srh1
                     }]
-                    const listMessage = {
+                    const listMessage1 = {
                         text: " \n\n name : " + file1["title"] + '\n\n ',
                         footer: config.FOOTER,
                         title: '卍 HETLAR 𝙱𝙾𝚃 卍 التحميل من اليوتيوب',
                         buttonText: "النتائج اضغط هنا",
                         sections
                     }
-                    await conn.sendMessage(from, listMessage, { quoted: mek })
+                    await conn.sendMessage(from, listMessage1, { quoted: mek })
                 } catch (e) {
                     const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
                     await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
