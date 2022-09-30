@@ -350,10 +350,29 @@ async function cmd(conn, mek) {
                 try {
                     if (!q) return await conn.sendMessage(from, { text: 'need youtube link' }, { quoted: mek })
                     if (!q.includes('youtu')) return await conn.sendMessage(from, { text: 'need youtube link' }, { quoted: mek })
-                    const data1 = await axios.get('https://zenzapis.xyz/downloader/ytshorts?apikey=8833301e7333&url=' + q);
-                    const file1 = data1.data.result.getAudio
-                    const data = await axios.get('http://api-tests.orgfree.com/tinyext.php?url=' + file1);
-                    const file = data.data
+                    const data1 = await axios.get('https://api.snappea.com/v1/video/details?url=' + q);
+                    const file = data1.data["videoInfo"]
+                    if (file.length < 1) return await conn.sendMessage(from, { text: e2Lang.N_FOUND }, { quoted: mek })
+                    const s1 = data1.data["videoInfo"]["downloadInfoList"];
+                    var srh = [];
+                    for (var i = 0; i < file.length; i++) {
+                        srh.push({
+                            title: s1[i]["formatExt"] + '-' + s1[i]["formatAlias"],
+                            description: '',
+                            rowId: prefix + 'send' + s1[i].partList[0]['urlList'][0]
+                        });
+                    }
+                    const sections = [{
+                        title: "search results",
+                        rows: srh
+                    }]
+                    const listMessage = {
+                        text: " \n\n name : " + file["title"] + '\n\n ',
+                        footer: config.FOOTER,
+                        title: '卍 HETLAR 𝙱𝙾𝚃 卍 التحميل من اليوتيوب',
+                        buttonText: "النتائج اضغط هنا",
+                        sections
+                    }
                     let r = (Math.random() + 1).toString(36).substring(7);
                     const rand = r + '.mp3'
                     const media = request(file).pipe(fs.createWriteStream('/tmp/' + file));
@@ -993,6 +1012,16 @@ instagram.com/x_mahmoud_medhat_official_x/
 
 }
 
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
 module.exports = cmd
 module.exports = cmd
 module.exports = cmd
