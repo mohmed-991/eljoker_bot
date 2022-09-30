@@ -373,30 +373,31 @@ async function cmd(conn, mek) {
                         sections
                     }
                     await conn.sendMessage(from, listMessage, { quoted: mek })
-                        // let r = (Math.random() + 1).toString(36).substring(7);
-                        // const rand = r + '.mp3'
-                        // const media = request(file).pipe(fs.createWriteStream('/tmp/' + file));
-                        // const media1 = media.on("finish", () => {
-                        //     return fs.statSync('/tmp/' + file).size;
-                        // });
-                        // console.log(media1);
-                        // const media1 = media.on("finish", () => {
-                        //     return exec();
-                        // });
-                        // console.log(media1)
-                        // const docsongdown = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
-                        // await conn.sendMessage(from, { delete: docsongdown.key })
-                        // const docsongup = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
-                        // await conn.sendMessage(from, { audio: { url: file }, mimetype: 'audio/mpeg' }, { quoted: mek })
-                        // await conn.sendMessage(from, { delete: docsongup.key })
-
-
                 } catch (e) {
                     const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
                     await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
                     await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
                 }
                 break
+                // let r = (Math.random() + 1).toString(36).substring(7);
+                // const rand = r + '.mp3'
+                // const media = request(file).pipe(fs.createWriteStream('/tmp/' + file));
+                // const media1 = media.on("finish", () => {
+                //     return fs.statSync('/tmp/' + file).size;
+                // });
+                // console.log(media1);
+                // const media1 = media.on("finish", () => {
+                //     return exec();
+                // });
+                // console.log(media1)
+                // const docsongdown = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
+                // await conn.sendMessage(from, { delete: docsongdown.key })
+                // const docsongup = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
+                // await conn.sendMessage(from, { audio: { url: file }, mimetype: 'audio/mpeg' }, { quoted: mek })
+                // await conn.sendMessage(from, { delete: docsongup.key })
+
+
+
 
                 //_______________________________________________________________________________________________________________________________________________________   //		      
                 // facebook //
