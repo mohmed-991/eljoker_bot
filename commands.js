@@ -389,7 +389,7 @@ async function cmd(conn, mek) {
                     const filedown = await conn.sendMessage(from, { text: config.FILE_UP }, { quoted: mek })
                     const media = request.get(q).on('error', function(err) { console.log(err) }).pipe(fs.createWriteStream('2.mp3'));
                     const media1 = media.on("finish", () => {
-                        return fs.statSync(+'2.mp3').size;
+                        return fs.statSync('2.mp3').size;
                     });
                     const bytesToMegaBytes = bytes => bytes / (1024 ** 2);
                     const size1 = bytesToMegaBytes(media1);
