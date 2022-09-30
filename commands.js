@@ -352,6 +352,7 @@ async function cmd(conn, mek) {
                     if (!q.includes('youtu')) return await conn.sendMessage(from, { text: 'need youtube link' }, { quoted: mek })
                     const data1 = await axios.get('https://api.snappea.com/v1/video/details?url=' + q);
                     const file = data1.data["videoInfo"]
+                    console.log(file);
                     if (file.length < 1) return await conn.sendMessage(from, { text: e2Lang.N_FOUND }, { quoted: mek })
                     const s1 = data1.data["videoInfo"]["downloadInfoList"];
                     var srh = [];
@@ -374,22 +375,22 @@ async function cmd(conn, mek) {
                         sections
                     }
                     await conn.sendMessage(from, listMessage, { quoted: mek })
-                    // let r = (Math.random() + 1).toString(36).substring(7);
-                    // const rand = r + '.mp3'
-                    // const media = request(file).pipe(fs.createWriteStream('/tmp/' + file));
-                    // const media1 = media.on("finish", () => {
-                    //     return fs.statSync('/tmp/' + file).size;
-                    // });
-                    // console.log(media1);
-                    // const media1 = media.on("finish", () => {
-                    //     return exec();
-                    // });
-                    // console.log(media1)
-                    // const docsongdown = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
-                    // await conn.sendMessage(from, { delete: docsongdown.key })
-                    // const docsongup = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
-                    // await conn.sendMessage(from, { audio: { url: file }, mimetype: 'audio/mpeg' }, { quoted: mek })
-                    // await conn.sendMessage(from, { delete: docsongup.key })
+                        // let r = (Math.random() + 1).toString(36).substring(7);
+                        // const rand = r + '.mp3'
+                        // const media = request(file).pipe(fs.createWriteStream('/tmp/' + file));
+                        // const media1 = media.on("finish", () => {
+                        //     return fs.statSync('/tmp/' + file).size;
+                        // });
+                        // console.log(media1);
+                        // const media1 = media.on("finish", () => {
+                        //     return exec();
+                        // });
+                        // console.log(media1)
+                        // const docsongdown = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
+                        // await conn.sendMessage(from, { delete: docsongdown.key })
+                        // const docsongup = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
+                        // await conn.sendMessage(from, { audio: { url: file }, mimetype: 'audio/mpeg' }, { quoted: mek })
+                        // await conn.sendMessage(from, { delete: docsongup.key })
 
 
                 } catch (e) {
