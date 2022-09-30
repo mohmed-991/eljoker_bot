@@ -410,8 +410,8 @@ async function cmd(conn, mek) {
                         // } catch (err) {
                         //     console.error(err)
                         // }
-                        // } catch (e) {
-                        //     await conn.sendMessage(from, { text: 'تعذر ارسال التطبيق آسف صديقي \n\n' + e }, { quoted: mek })
+                } catch (e) {
+                    await conn.sendMessage(from, { text: 'تعذر ارسال التطبيق آسف صديقي \n\n' + e }, { quoted: mek })
                         // try {
                         //     fs.unlinkSync(path + 'tmp' + ext)
                         // } catch (err) {
