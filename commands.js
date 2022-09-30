@@ -352,7 +352,6 @@ async function cmd(conn, mek) {
                     if (!q.includes('youtu')) return await conn.sendMessage(from, { text: 'need youtube link' }, { quoted: mek })
                     const data2 = await axios.get('https://api.snappea.com/v1/video/details?url=' + q);
                     const file1 = data2.data['videoInfo']['downloadInfoList']
-                    console.log(file1.length)
                     if (file1.length < 1) return await conn.sendMessage(from, { text: e2Lang.N_FOUND }, { quoted: mek });
                     var srh = [];
                     for (var i = 0; i < file1.length; i++) {
@@ -381,26 +380,31 @@ async function cmd(conn, mek) {
                     await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
                 }
                 break
-                // let r = (Math.random() + 1).toString(36).substring(7);
-                // const rand = r + '.mp3'
-                // const media = request(file).pipe(fs.createWriteStream('/tmp/' + file));
-                // const media1 = media.on("finish", () => {
-                //     return fs.statSync('/tmp/' + file).size;
-                // });
-                // console.log(media1);
-                // const media1 = media.on("finish", () => {
-                //     return exec();
-                // });
-                // console.log(media1)
-                // const docsongdown = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
-                // await conn.sendMessage(from, { delete: docsongdown.key })
-                // const docsongup = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
-                // await conn.sendMessage(from, { audio: { url: file }, mimetype: 'audio/mpeg' }, { quoted: mek })
-                // await conn.sendMessage(from, { delete: docsongup.key })
-
-
-
-
+            case 'send':
+                try {
+                    // let r = (Math.random() + 1).toString(36).substring(7);
+                    // const rand = r + '.mp3'
+                    const media = request(q).pipe(fs.createWriteStream('/tmp/' + f));
+                    const media1 = media.on("finish", () => {
+                        return fs.statSync('/tmp/' + q).size;
+                    });
+                    console.log(media1);
+                    try {
+                        fs.unlinkSync('/tmp/' + q)
+                    } catch (err) {
+                        console.error(err)
+                    }
+                    // const docsongdown = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
+                    // await conn.sendMessage(from, { delete: docsongdown.key })
+                    // const docsongup = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
+                    // await conn.sendMessage(from, { audio: { url: file }, mimetype: 'audio/mpeg' }, { quoted: mek })
+                    // await conn.sendMessage(from, { delete: docsongup.key })
+                } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
+                    await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
+                }
+                break
                 //_______________________________________________________________________________________________________________________________________________________   //		      
                 // facebook //
 
