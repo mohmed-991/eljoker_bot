@@ -418,6 +418,9 @@ async function cmd(conn, mek) {
                 break
                 //_______________________________________________________________________________________________________________________________________________________   //		      
                 // facebook //
+            case 'send1':
+                await conn.sendMessage(from, { document: { url: q }, mimetype: 'audio/mpeg', fileName: q }, { quoted: mek })
+                break
 
             case 'fb':
             case 'facebook':
