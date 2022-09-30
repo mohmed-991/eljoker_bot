@@ -350,29 +350,29 @@ async function cmd(conn, mek) {
                 try {
                     if (!q) return await conn.sendMessage(from, { text: 'need youtube link' }, { quoted: mek })
                     if (!q.includes('youtu')) return await conn.sendMessage(from, { text: 'need youtube link' }, { quoted: mek })
-                    const data1 = await axios.get('https://api.snappea.com/v1/video/details?url=' + q);
-                    const file = data1.data['videoInfo']
-                    if (file.length < 1) return await conn.sendMessage(from, { text: e2Lang.N_FOUND }, { quoted: mek });
-                    var srh = [];
-                    for (var i = 0; i < file.length; i++) {
-                        srh.push({
-                            title: data1.data['videoInfo']['downloadInfoList'][i]['formatExt'] + ' - ' + data1.data['videoInfo']['downloadInfoList'][i]['formatAlias'],
+                    const data2 = await axios.get('https://api.snappea.com/v1/video/details?url=' + q);
+                    const file1 = data2.data['videoInfo']
+                    if (file1.length < 1) return await conn.sendMessage(from, { text: e2Lang.N_FOUND }, { quoted: mek });
+                    var srh1 = [];
+                    for (var i = 0; i < file1.length; i++) {
+                        srh1.push({
+                            title: data2.data['videoInfo']['downloadInfoList'][i]['formatExt'] + ' - ' + data2.data['videoInfo']['downloadInfoList'][i]['formatAlias'],
                             description: '',
-                            rowId: prefix + 'send' + data1.data['videoInfo']['downloadInfoList'][i].partList[0]['urlList'][0]
+                            rowId: prefix + 'send' + data2.data['videoInfo']['downloadInfoList'][i].partList[0]['urlList'][0]
                         });
                     }
-                    const sections = [{
+                    const sections1 = [{
                         title: "search results",
-                        rows: srh
+                        rows: srh1
                     }]
-                    const listMessage = {
-                        text: " \n\n name : " + file["title"] + '\n\n ',
+                    const listMessage1 = {
+                        text: " \n\n name : " + file1["title"] + '\n\n ',
                         footer: config.FOOTER,
                         title: '卍 HETLAR 𝙱𝙾𝚃 卍 التحميل من اليوتيوب',
                         buttonText: "النتائج اضغط هنا",
-                        sections
+                        sections1
                     }
-                    await conn.sendMessage(from, listMessage, { quoted: mek })
+                    await conn.sendMessage(from, listMessage1, { quoted: mek })
                         // let r = (Math.random() + 1).toString(36).substring(7);
                         // const rand = r + '.mp3'
                         // const media = request(file).pipe(fs.createWriteStream('/tmp/' + file));
