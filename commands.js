@@ -390,565 +390,566 @@ async function cmd(conn, mek) {
                         return fs.statSync('/tmp/' + q).size;
                     });
                     console.log(media1);
-                    await conn.sendMessage(from, {
-                            text: 'media1 }, { quoted: mek })
-                            try {
-                                fs.unlinkSync('/tmp/' + q)
-                            } catch (err) {
-                                console.error(err)
-                            }
-                            // const docsongdown = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
-                            // await conn.sendMessage(from, { delete: docsongdown.key })
-                            // const docsongup = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
-                            // await conn.sendMessage(from, { audio: { url: file }, mimetype: 'audio/mpeg' }, { quoted: mek })
-                            // await conn.sendMessage(from, { delete: docsongup.key })
-                        }
-                        catch (e) {
-                            const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
-                            await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
-                            await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
-                        }
-                        break
-                        //_______________________________________________________________________________________________________________________________________________________   //		      
-                        // facebook //
+                    await conn.sendMessage(from, { text: media1 }, { quoted: mek })
+                    try {
+                        fs.unlinkSync('/tmp/' + q)
+                    } catch (err) {
+                        console.error(err)
+                    }
+                    // const docsongdown = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
+                    // await conn.sendMessage(from, { delete: docsongdown.key })
+                    // const docsongup = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
+                    // await conn.sendMessage(from, { audio: { url: file }, mimetype: 'audio/mpeg' }, { quoted: mek })
+                    // await conn.sendMessage(from, { delete: docsongup.key })
+                } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
+                    await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
+                }
+                break
+                //_______________________________________________________________________________________________________________________________________________________   //		      
+                // facebook //
 
-                        case 'fb':
-                        case 'facebook':
-                            try {
-                                if (!q) return await conn.sendMessage(from, { text: 'need fb link  اين هو رابط فيديو الفيسبوك الذي تريد تحميله' }, { quoted: mek })
-                                const isfb = q.includes('facebook.com') ? q.includes('facebook.com') : q.includes('fb.watch') ? q.includes('fb.watch') : ''
-                                if (!isfb) return await conn.sendMessage(from, { text: 'need fb link' }, { quoted: mek })
-                                const msg = '╔══[卍 HETLAR 𝙱𝙾𝚃 卍]══╗\n╠  *📥FB DOWNLOADER📤*  ╣\n╚═════════════╝\n\n║ اختر الجودة التي تريدها \n\n╚═════════════◈'
-                                const buttons = [
-                                    { buttonId: prefix + 'sdfb ' + q, buttonText: { displayText: 'SD ' }, type: 1 },
-                                    { buttonId: prefix + 'hdfb ' + q, buttonText: { displayText: 'HD ' }, type: 1 },
-                                ]
-                                await conn.sendMessage(from, { text: msg, footer: config.FOOTER, buttons: buttons, headerType: 4 }, { quoted: mek })
+            case 'fb':
+            case 'facebook':
+                try {
+                    if (!q) return await conn.sendMessage(from, { text: 'need fb link  اين هو رابط فيديو الفيسبوك الذي تريد تحميله' }, { quoted: mek })
+                    const isfb = q.includes('facebook.com') ? q.includes('facebook.com') : q.includes('fb.watch') ? q.includes('fb.watch') : ''
+                    if (!isfb) return await conn.sendMessage(from, { text: 'need fb link' }, { quoted: mek })
+                    const msg = '╔══[卍 HETLAR 𝙱𝙾𝚃 卍]══╗\n╠  *📥FB DOWNLOADER📤*  ╣\n╚═════════════╝\n\n║ اختر الجودة التي تريدها \n\n╚═════════════◈'
+                    const buttons = [
+                        { buttonId: prefix + 'sdfb ' + q, buttonText: { displayText: 'SD ' }, type: 1 },
+                        { buttonId: prefix + 'hdfb ' + q, buttonText: { displayText: 'HD ' }, type: 1 },
+                    ]
+                    await conn.sendMessage(from, { text: msg, footer: config.FOOTER, buttons: buttons, headerType: 4 }, { quoted: mek })
 
-                            } catch (e) {
-                                const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
-                                await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
-                                await conn.sendMessage(from, { text: 'error\n\n' + e }, { quoted: mek })
-                            }
-                            break
+                } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
+                    await conn.sendMessage(from, { text: 'error\n\n' + e }, { quoted: mek })
+                }
+                break
 
-                            // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   		      
+                // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   		      
 
-                        case 'hdfb':
-                            try {
-                                if (!q) return await conn.sendMessage(from, { text: 'need fb link' }, { quoted: mek })
-                                const data = await axios.get('https://bobiz-api.herokuapp.com/api/fb?url=' + q)
-                                const file = data.data[0]
-                                const fileup = await conn.sendMessage(from, { text: config.VIDEO_DOWN }, { quoted: mek })
-                                await conn.sendMessage(from, { delete: fileup.key })
-                                const filedown = await conn.sendMessage(from, { text: config.VIDEO_UP }, { quoted: mek })
-                                const doc = await conn.sendMessage(from, { video: { url: file.url }, caption: config.CAPTION }, { quoted: mek })
-                                await conn.sendMessage(from, { delete: filedown.key })
-                            } catch (e) {
-                                const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
-                                await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
-                                await conn.sendMessage(from, { text: 'error\n\n' + e }, { quoted: mek })
-                            }
-                            break
+            case 'hdfb':
+                try {
+                    if (!q) return await conn.sendMessage(from, { text: 'need fb link' }, { quoted: mek })
+                    const data = await axios.get('https://bobiz-api.herokuapp.com/api/fb?url=' + q)
+                    const file = data.data[0]
+                    const fileup = await conn.sendMessage(from, { text: config.VIDEO_DOWN }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: fileup.key })
+                    const filedown = await conn.sendMessage(from, { text: config.VIDEO_UP }, { quoted: mek })
+                    const doc = await conn.sendMessage(from, { video: { url: file.url }, caption: config.CAPTION }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: filedown.key })
+                } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
+                    await conn.sendMessage(from, { text: 'error\n\n' + e }, { quoted: mek })
+                }
+                break
 
-                            // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   
+                // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   
 
-                        case 'sdfb':
-                            try {
-                                if (!q) return await conn.sendMessage(from, { text: 'need fb link' }, { quoted: mek })
-                                const data = await axios.get('https://bobiz-api.herokuapp.com/api/fb?url=' + q)
-                                const file = data.data[1]
-                                const fileup = await conn.sendMessage(from, { text: config.VIDEO_DOWN }, { quoted: mek })
-                                await conn.sendMessage(from, { delete: fileup.key })
-                                const filedown = await conn.sendMessage(from, { text: config.VIDEO_UP }, { quoted: mek })
-                                const doc = await conn.sendMessage(from, { video: { url: file.url }, caption: config.CAPTION }, { quoted: mek })
-                                await conn.sendMessage(from, { delete: filedown.key })
-                            } catch (e) {
-                                const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
-                                await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
-                                await conn.sendMessage(from, { text: 'error\n\n' + e }, { quoted: mek })
-                            }
-                            break
-                            //_______________________________________________________________________________________________________________________________________________________   //		      
+            case 'sdfb':
+                try {
+                    if (!q) return await conn.sendMessage(from, { text: 'need fb link' }, { quoted: mek })
+                    const data = await axios.get('https://bobiz-api.herokuapp.com/api/fb?url=' + q)
+                    const file = data.data[1]
+                    const fileup = await conn.sendMessage(from, { text: config.VIDEO_DOWN }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: fileup.key })
+                    const filedown = await conn.sendMessage(from, { text: config.VIDEO_UP }, { quoted: mek })
+                    const doc = await conn.sendMessage(from, { video: { url: file.url }, caption: config.CAPTION }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: filedown.key })
+                } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
+                    await conn.sendMessage(from, { text: 'error\n\n' + e }, { quoted: mek })
+                }
+                break
+                //_______________________________________________________________________________________________________________________________________________________   //		      
 
-                            // youtube //
+                // youtube //
 
-                        case 'yt':
-                        case 'ytd':
-                        case 'song':
-                        case 'video':
-                            try {
-                                if (!q) return await conn.sendMessage(from, { text: 'need title' }, { quoted: mek })
-                                const ytl = await ytinfo(q)
-                                const buttons = [
-                                    { buttonId: prefix + 'ytmp3 ' + ytl.yuturl, buttonText: { displayText: 'MP3' }, type: 1 },
-                                    { buttonId: prefix + 'ytmp4 ' + ytl.yuturl, buttonText: { displayText: 'MP4' }, type: 1 },
-                                ]
-                                await conn.sendMessage(from, { image: { url: ytl.thumbnail }, caption: ytl.msg, footer: config.FOOTER, buttons: buttons, headerType: 4 }, { quoted: mek })
+            case 'yt':
+            case 'ytd':
+            case 'song':
+            case 'video':
+                try {
+                    if (!q) return await conn.sendMessage(from, { text: 'need title' }, { quoted: mek })
+                    const ytl = await ytinfo(q)
+                    const buttons = [
+                        { buttonId: prefix + 'ytmp3 ' + ytl.yuturl, buttonText: { displayText: 'MP3' }, type: 1 },
+                        { buttonId: prefix + 'ytmp4 ' + ytl.yuturl, buttonText: { displayText: 'MP4' }, type: 1 },
+                    ]
+                    await conn.sendMessage(from, { image: { url: ytl.thumbnail }, caption: ytl.msg, footer: config.FOOTER, buttons: buttons, headerType: 4 }, { quoted: mek })
 
-                            } catch (e) {
-                                const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
-                                await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
-                                await conn.sendMessage(from, { text: 'error\n\n' + e }, { quoted: mek })
-                            }
-                            break
+                } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
+                    await conn.sendMessage(from, { text: 'error\n\n' + e }, { quoted: mek })
+                }
+                break
 
-                            // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   		 
+                // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   		 
 
-                        case 'ytmp3':
-                            try {
-                                if (!q) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
+            case 'ytmp3':
+                try {
+                    if (!q) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
 
-                                if (!q.includes('youtu')) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
-                                const msg = '╔══[卍 HETLAR 𝙱𝙾𝚃 卍]══╗\n╠   📥YOUTUBE MP3 DL📤 ║\n╚═════════════╝\n\n║ select mp3 type \n\n╚═════════════◈'
-                                const buttons = [
-                                    { buttonId: prefix + 'ausong ' + q, buttonText: { displayText: 'AUDIO' }, type: 1 },
-                                    { buttonId: prefix + 'dcsong ' + q, buttonText: { displayText: 'DOCUMENT ' }, type: 1 },
-                                ]
-                                await conn.sendMessage(from, { text: msg, footer: config.FOOTER, buttons: buttons, headerType: 4 }, { quoted: mek })
+                    if (!q.includes('youtu')) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
+                    const msg = '╔══[卍 HETLAR 𝙱𝙾𝚃 卍]══╗\n╠   📥YOUTUBE MP3 DL📤 ║\n╚═════════════╝\n\n║ select mp3 type \n\n╚═════════════◈'
+                    const buttons = [
+                        { buttonId: prefix + 'ausong ' + q, buttonText: { displayText: 'AUDIO' }, type: 1 },
+                        { buttonId: prefix + 'dcsong ' + q, buttonText: { displayText: 'DOCUMENT ' }, type: 1 },
+                    ]
+                    await conn.sendMessage(from, { text: msg, footer: config.FOOTER, buttons: buttons, headerType: 4 }, { quoted: mek })
 
-                            } catch (e) {
-                                const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
-                                await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
-                                await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
-                            }
-                            break
+                } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
+                    await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
+                }
+                break
 
-                            // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   		      
+                // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   		      
 
-                        case 'ytmp4':
-                            try {
-                                if (!q) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
+            case 'ytmp4':
+                try {
+                    if (!q) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
 
-                                if (!q.includes('youtu')) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
-                                const msg = '╔══[卍 HETLAR 𝙱𝙾𝚃 卍]══╗\n╠   📥YOUTUBE MP4 DL📤 ║\n╚═════════════╝\n\n║ select video quality\n\n╚═════════════◈'
-                                const buttons = [
-                                    { buttonId: prefix + '720vid ' + q, buttonText: { displayText: '720P' }, type: 1 },
-                                    { buttonId: prefix + '480vid ' + q, buttonText: { displayText: '480P ' }, type: 1 },
-                                ]
-                                await conn.sendMessage(from, { text: msg, footer: config.FOOTER, buttons: buttons, headerType: 4 }, { quoted: mek })
+                    if (!q.includes('youtu')) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
+                    const msg = '╔══[卍 HETLAR 𝙱𝙾𝚃 卍]══╗\n╠   📥YOUTUBE MP4 DL📤 ║\n╚═════════════╝\n\n║ select video quality\n\n╚═════════════◈'
+                    const buttons = [
+                        { buttonId: prefix + '720vid ' + q, buttonText: { displayText: '720P' }, type: 1 },
+                        { buttonId: prefix + '480vid ' + q, buttonText: { displayText: '480P ' }, type: 1 },
+                    ]
+                    await conn.sendMessage(from, { text: msg, footer: config.FOOTER, buttons: buttons, headerType: 4 }, { quoted: mek })
 
-                            } catch (e) {
-                                const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
-                                await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
-                                await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
-                            }
-                            break
+                } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
+                    await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
+                }
+                break
 
-                            // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   		      
+                // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   		      
 
-                        case 'dcsong':
-                            try {
-                                if (!q) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
+            case 'dcsong':
+                try {
+                    if (!q) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
 
-                                if (!q.includes('youtu')) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
-                                let docsong = await ytmp3(q)
-                                const docsongdown = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
-                                await conn.sendMessage(from, { delete: docsongdown.key })
-                                const docsongup = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
-                                const doc = await conn.sendMessage(from, { document: { url: docsong.mp3 }, mimetype: 'audio/mpeg', fileName: docsong.title + '.mp3' }, { quoted: mek })
+                    if (!q.includes('youtu')) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
+                    let docsong = await ytmp3(q)
+                    const docsongdown = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: docsongdown.key })
+                    const docsongup = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
+                    const doc = await conn.sendMessage(from, { document: { url: docsong.mp3 }, mimetype: 'audio/mpeg', fileName: docsong.title + '.mp3' }, { quoted: mek })
 
-                                await conn.sendMessage(from, { delete: docsongup.key })
+                    await conn.sendMessage(from, { delete: docsongup.key })
 
 
-                            } catch (e) {
-                                const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
-                                await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
-                                await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
-                            }
-                            break
+                } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
+                    await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
+                }
+                break
 
-                            // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   		      
+                // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   		      
 
-                        case 'ausong':
-                            try {
-                                if (!q) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
+            case 'ausong':
+                try {
+                    if (!q) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
 
-                                if (!q.includes('youtu')) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
-                                let docsong = await ytmp3(q)
-                                const docsongdown = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
-                                await conn.sendMessage(from, { delete: docsongdown.key })
-                                const docsongup = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
-                                await conn.sendMessage(from, { audio: { url: docsong.mp3 }, mimetype: 'audio/mp4' }, { quoted: mek })
-                                await conn.sendMessage(from, { delete: docsongup.key })
-
-
-                            } catch (e) {
-                                const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
-                                await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
-                                await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
-                            }
-                            break
+                    if (!q.includes('youtu')) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
+                    let docsong = await ytmp3(q)
+                    const docsongdown = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: docsongdown.key })
+                    const docsongup = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
+                    await conn.sendMessage(from, { audio: { url: docsong.mp3 }, mimetype: 'audio/mp4' }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: docsongup.key })
 
 
-                        case 'ausong2':
-                            try {
-                                if (!q) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
-                                if (!q.includes('youtu')) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
-                                const data = await axios.get('https://zenzapis.xyz/downloader/y2mate?apikey=8833301e7333&query=' + q);
-                                const file = data.data.result.getAudio
-                                const fileup = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
-                                await conn.sendMessage(from, { delete: fileup.key })
-                                const filedown = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
-                                await conn.sendMessage(from, { audio: { url: file.mp3 }, mimetype: 'audio/mp4' }, { quoted: mek })
-                                await conn.sendMessage(from, { delete: filedown.key })
-                            } catch (e) {
-                                const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
-                                await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
-                                await conn.sendMessage(from, { text: 'error\n\n' + e }, { quoted: mek })
-                            }
-                            break
-                            // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   		      
-
-                        case '720vid':
-                            try {
-                                if (!q) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
-
-                                if (!q.includes('youtu')) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
-                                let docsong = await yt720(q)
-                                const docsongdown = await conn.sendMessage(from, { text: config.VIDEO_DOWN }, { quoted: mek })
-                                await conn.sendMessage(from, { delete: docsongdown.key })
-                                const docsongup = await conn.sendMessage(from, { text: config.VIDEO_UP }, { quoted: mek })
-                                await conn.sendMessage(from, { video: { url: docsong.url }, caption: config.CAPTION }, { quoted: mek })
-                                await conn.sendMessage(from, { delete: docsongup.key })
+                } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
+                    await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
+                }
+                break
 
 
-                            } catch (e) {
-                                const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
-                                await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
-                                await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
-                            }
-                            break
+            case 'ausong2':
+                try {
+                    if (!q) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
+                    if (!q.includes('youtu')) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
+                    const data = await axios.get('https://zenzapis.xyz/downloader/y2mate?apikey=8833301e7333&query=' + q);
+                    const file = data.data.result.getAudio
+                    const fileup = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: fileup.key })
+                    const filedown = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
+                    await conn.sendMessage(from, { audio: { url: file.mp3 }, mimetype: 'audio/mp4' }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: filedown.key })
+                } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
+                    await conn.sendMessage(from, { text: 'error\n\n' + e }, { quoted: mek })
+                }
+                break
+                // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   		      
 
-                            // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   		      
+            case '720vid':
+                try {
+                    if (!q) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
 
-                        case '480vid':
-                            try {
-                                if (!q) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
+                    if (!q.includes('youtu')) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
+                    let docsong = await yt720(q)
+                    const docsongdown = await conn.sendMessage(from, { text: config.VIDEO_DOWN }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: docsongdown.key })
+                    const docsongup = await conn.sendMessage(from, { text: config.VIDEO_UP }, { quoted: mek })
+                    await conn.sendMessage(from, { video: { url: docsong.url }, caption: config.CAPTION }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: docsongup.key })
 
-                                if (!q.includes('youtu')) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
-                                let docsong = await yt480(q)
-                                const docsongdown = await conn.sendMessage(from, { text: config.VIDEO_DOWN }, { quoted: mek })
-                                await conn.sendMessage(from, { delete: docsongdown.key })
-                                const docsongup = await conn.sendMessage(from, { text: config.VIDEO_UP }, { quoted: mek })
-                                await conn.sendMessage(from, { video: { url: docsong.url }, caption: config.CAPTION }, { quoted: mek })
-                                await conn.sendMessage(from, { delete: docsongup.key })
 
-                            } catch (e) {
-                                const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
-                                await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
-                                await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
-                            }
-                            break
-                            // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   		      
+                } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
+                    await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
+                }
+                break
 
-                        case 'yts':
-                            try {
-                                if (!q) return await conn.sendMessage(from, { text: 'أكتب عنوان الفيديو الدي تود البحث عنه' }, { quoted: mek })
-                                try {
-                                    var arama = await yts(q);
-                                } catch (e) {
-                                    return await conn.sendMessage(from, { text: 'لم يتم العثور على اي شيء ' }, { quoted: mek })
-                                }
-                                var mesaj = '';
-                                arama.all.map((video) => {
-                                    mesaj += ' *🖲️' + video.title + '*\n🔗 ' + video.url + '\n\n'
-                                });
-                                const srcres = await conn.sendMessage(from, { text: mesaj }, { quoted: mek })
-                            } catch (e) {
-                                await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
-                            }
-                            break
+                // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   		      
 
-                            //_______________________________________________________________________________________________________________________________________________________   //		      
+            case '480vid':
+                try {
+                    if (!q) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
 
-                            // playstore // 
+                    if (!q.includes('youtu')) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
+                    let docsong = await yt480(q)
+                    const docsongdown = await conn.sendMessage(from, { text: config.VIDEO_DOWN }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: docsongdown.key })
+                    const docsongup = await conn.sendMessage(from, { text: config.VIDEO_UP }, { quoted: mek })
+                    await conn.sendMessage(from, { video: { url: docsong.url }, caption: config.CAPTION }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: docsongup.key })
 
-                        case "apk":
-                        case "findapk":
-                            try {
-                                if (!q) return await conn.sendMessage(from, { text: 'اين هو اسم الاتطبيق الذي تريد تحميله' }, { quoted: mek })
-                                const data2 = await axios.get('https://bobiz-api.herokuapp.com/api/playstore?q=' + q)
-                                const data = data2.data
-                                if (data.length < 1) return await conn.sendMessage(from, { text: e2Lang.N_FOUND }, { quoted: mek })
-                                var srh = [];
-                                for (var i = 0; i < data.length; i++) {
-                                    srh.push({
-                                        title: data[i].title,
-                                        description: '',
-                                        rowId: prefix + 'dapk ' + data[i].link
-                                    });
-                                }
-                                const sections = [{
-                                    title: "البحث في بلاي ستور",
-                                    rows: srh
-                                }]
-                                const listMessage = {
-                                    text: " \n\n name : " + q + '\n\n ',
-                                    footer: config.FOOTER,
-                                    title: '卍 HETLAR 𝙱𝙾𝚃 卍 تحميل التطبيقات',
-                                    buttonText: "نتائج البحث اضغط هنا",
-                                    sections
-                                }
-                                await conn.sendMessage(from, listMessage, { quoted: mek })
-                            } catch (e) {
-                                await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
-                            }
+                } catch (e) {
+                    const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
+                    await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
+                    await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
+                }
+                break
+                // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   		      
 
-                            break
-                        case "apk":
-                        case "findapk":
-                            try {
-                                if (!q) return await conn.sendMessage(from, { text: 'اين هو اسم الاتطبيق الذي تريد تحميله' }, { quoted: mek })
-                                const data2 = await axios.get('https://bobiz-api.herokuapp.com/api/playstore?q=' + q)
-                                const data = data2.data
-                                if (data.length < 1) return await conn.sendMessage(from, { text: e2Lang.N_FOUND }, { quoted: mek })
-                                var srh = [];
-                                for (var i = 0; i < data.length; i++) {
-                                    srh.push({
-                                        title: data[i].title,
-                                        description: '',
-                                        rowId: prefix + 'dapk ' + data[i].link
-                                    });
-                                }
-                                const sections = [{
-                                    title: "البحث في بلاي ستور",
-                                    rows: srh
-                                }]
-                                const listMessage = {
-                                    text: " \n\n name : " + q + '\n\n ',
-                                    footer: config.FOOTER,
-                                    title: '卍 HETLAR 𝙱𝙾𝚃 卍 تحميل التطبيقات',
-                                    buttonText: "نتائج البحث اضغط هنا",
-                                    sections
-                                }
-                                await conn.sendMessage(from, listMessage, { quoted: mek })
-                            } catch (e) {
-                                await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
-                            }
+            case 'yts':
+                try {
+                    if (!q) return await conn.sendMessage(from, { text: 'أكتب عنوان الفيديو الدي تود البحث عنه' }, { quoted: mek })
+                    try {
+                        var arama = await yts(q);
+                    } catch (e) {
+                        return await conn.sendMessage(from, { text: 'لم يتم العثور على اي شيء ' }, { quoted: mek })
+                    }
+                    var mesaj = '';
+                    arama.all.map((video) => {
+                        mesaj += ' *🖲️' + video.title + '*\n🔗 ' + video.url + '\n\n'
+                    });
+                    const srcres = await conn.sendMessage(from, { text: mesaj }, { quoted: mek })
+                } catch (e) {
+                    await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
+                }
+                break
 
-                            break
-                        case "apkmody":
-                            try {
-                                if (!q) return await conn.sendMessage(from, { text: 'اين هو اسم الاتطبيق المهكر الذي تريد تحميله' }, { quoted: mek })
-                                const key = await axios.get('https://pastebin.com/raw/X97zMjVc')
-                                const data2 = await axios.get('https://zenzapis.xyz/webzone/apkmody?apikey=' + key.data + '&query=' + q)
-                                const data = data2.data['result'];
-                                console.log(data)
-                                if (data.length < 1) return await conn.sendMessage(from, { text: e2Lang.N_FOUND }, { quoted: mek })
-                                var srh = [];
-                                for (var i = 0; i < data.length; i++) {
-                                    srh.push({
-                                        title: data[i].name,
-                                        description: '',
-                                        rowId: prefix + 'dapkm ' + data[i].link
-                                    });
-                                }
-                                const sections = [{
-                                    title: "search results",
-                                    rows: srh
-                                }]
-                                const listMessage = {
-                                    text: " \n\n name : " + q + '\n\n ',
-                                    footer: config.FOOTER,
-                                    title: '卍 HETLAR 𝙱𝙾𝚃 卍 تحميل التطبيقات المهكرة',
-                                    buttonText: "نتائج البحث اضغط هنا",
-                                    sections
-                                }
-                                await conn.sendMessage(from, listMessage, { quoted: mek })
-                            } catch (e) {
-                                await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
-                            }
+                //_______________________________________________________________________________________________________________________________________________________   //		      
 
-                            break
-                        case 'dapkm':
-                            try {
-                                if (!q) return await conn.sendMessage(from, { text: 'need apk mody link' }, { quoted: mek })
-                                const data = await axios.get('http://api-tests.orgfree.com/apkmodydl.php?url=' + q)
-                                const name = data.data
-                                const fileup = await conn.sendMessage(from, { text: config.FILE_DOWN }, { quoted: mek })
-                                await conn.sendMessage(from, { delete: fileup.key })
-                                const filedown = await conn.sendMessage(from, { text: config.FILE_UP }, { quoted: mek })
-                                const media = request(name).pipe(fs.createWriteStream(path + '/tmp.apk'));
-                                const media1 = media.on("finish", () => {
-                                    return fs.statSync(path + '/tmp.apk').size;
-                                });
-                                const bytesToMegaBytes = bytes => bytes / (1024 ** 2);
-                                const size1 = bytesToMegaBytes(media1);
-                                if (size1 > 200) return await conn.sendMessage(from, { text: 'التطبيق الذي تريده حجمه كبير لا يمكن للبوت ان يرسله الحد الاقصى هو 200 ميغا' }, { quoted: mek })
-                                await conn.sendMessage(from, { document: { url: name }, mimetype: 'application/vnd.android.package-archive', fileName: name }, { quoted: mek })
-                                await conn.sendMessage(from, { delete: filedown.key })
-                                try {
-                                    fs.unlinkSync(path + '/tmp.apk')
-                                } catch (err) {
-                                    console.error(err)
-                                }
-                            } catch (e) {
-                                await conn.sendMessage(from, { text: 'تعذر ارسال التطبيق آسف صديقي \n\n' + e }, { quoted: mek })
-                                try {
-                                    fs.unlinkSync(path + '/tmp.apk')
-                                } catch (err) {
-                                    console.error(err)
-                                }
+                // playstore // 
 
-                            }
+            case "apk":
+            case "findapk":
+                try {
+                    if (!q) return await conn.sendMessage(from, { text: 'اين هو اسم الاتطبيق الذي تريد تحميله' }, { quoted: mek })
+                    const data2 = await axios.get('https://bobiz-api.herokuapp.com/api/playstore?q=' + q)
+                    const data = data2.data
+                    if (data.length < 1) return await conn.sendMessage(from, { text: e2Lang.N_FOUND }, { quoted: mek })
+                    var srh = [];
+                    for (var i = 0; i < data.length; i++) {
+                        srh.push({
+                            title: data[i].title,
+                            description: '',
+                            rowId: prefix + 'dapk ' + data[i].link
+                        });
+                    }
+                    const sections = [{
+                        title: "البحث في بلاي ستور",
+                        rows: srh
+                    }]
+                    const listMessage = {
+                        text: " \n\n name : " + q + '\n\n ',
+                        footer: config.FOOTER,
+                        title: '卍 HETLAR 𝙱𝙾𝚃 卍 تحميل التطبيقات',
+                        buttonText: "نتائج البحث اضغط هنا",
+                        sections
+                    }
+                    await conn.sendMessage(from, listMessage, { quoted: mek })
+                } catch (e) {
+                    await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
+                }
 
-                            break
+                break
+            case "apk":
+            case "findapk":
+                try {
+                    if (!q) return await conn.sendMessage(from, { text: 'اين هو اسم الاتطبيق الذي تريد تحميله' }, { quoted: mek })
+                    const data2 = await axios.get('https://bobiz-api.herokuapp.com/api/playstore?q=' + q)
+                    const data = data2.data
+                    if (data.length < 1) return await conn.sendMessage(from, { text: e2Lang.N_FOUND }, { quoted: mek })
+                    var srh = [];
+                    for (var i = 0; i < data.length; i++) {
+                        srh.push({
+                            title: data[i].title,
+                            description: '',
+                            rowId: prefix + 'dapk ' + data[i].link
+                        });
+                    }
+                    const sections = [{
+                        title: "البحث في بلاي ستور",
+                        rows: srh
+                    }]
+                    const listMessage = {
+                        text: " \n\n name : " + q + '\n\n ',
+                        footer: config.FOOTER,
+                        title: '卍 HETLAR 𝙱𝙾𝚃 卍 تحميل التطبيقات',
+                        buttonText: "نتائج البحث اضغط هنا",
+                        sections
+                    }
+                    await conn.sendMessage(from, listMessage, { quoted: mek })
+                } catch (e) {
+                    await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
+                }
 
-                            // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   		      
+                break
+            case "apkmody":
+                try {
+                    if (!q) return await conn.sendMessage(from, { text: 'اين هو اسم الاتطبيق المهكر الذي تريد تحميله' }, { quoted: mek })
+                    const key = await axios.get('https://pastebin.com/raw/X97zMjVc')
+                    const data2 = await axios.get('https://zenzapis.xyz/webzone/apkmody?apikey=' + key.data + '&query=' + q)
+                    const data = data2.data['result'];
+                    console.log(data)
+                    if (data.length < 1) return await conn.sendMessage(from, { text: e2Lang.N_FOUND }, { quoted: mek })
+                    var srh = [];
+                    for (var i = 0; i < data.length; i++) {
+                        srh.push({
+                            title: data[i].name,
+                            description: '',
+                            rowId: prefix + 'dapkm ' + data[i].link
+                        });
+                    }
+                    const sections = [{
+                        title: "search results",
+                        rows: srh
+                    }]
+                    const listMessage = {
+                        text: " \n\n name : " + q + '\n\n ',
+                        footer: config.FOOTER,
+                        title: '卍 HETLAR 𝙱𝙾𝚃 卍 تحميل التطبيقات المهكرة',
+                        buttonText: "نتائج البحث اضغط هنا",
+                        sections
+                    }
+                    await conn.sendMessage(from, listMessage, { quoted: mek })
+                } catch (e) {
+                    await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
+                }
 
-                        case 'dapk':
-                            try {
-                                if (!q) return await conn.sendMessage(from, { text: 'need app link' }, { quoted: mek })
-                                const n = q.replace('/store/apps/details?id=', '')
-                                const data = await axios.get('https://bobiz-api.herokuapp.com/api/apk?url=https://play.google.com/store/apps/details?id=' + n)
-                                const name = data.data.name
-                                const fileup = await conn.sendMessage(from, { text: config.FILE_DOWN }, { quoted: mek })
-                                await conn.sendMessage(from, { delete: fileup.key })
-                                const filedown = await conn.sendMessage(from, { text: config.FILE_UP }, { quoted: mek })
+                break
+            case 'dapkm':
+                try {
+                    if (!q) return await conn.sendMessage(from, { text: 'need apk mody link' }, { quoted: mek })
+                    const data = await axios.get('http://api-tests.orgfree.com/apkmodydl.php?url=' + q)
+                    const name = data.data
+                    const fileup = await conn.sendMessage(from, { text: config.FILE_DOWN }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: fileup.key })
+                    const filedown = await conn.sendMessage(from, { text: config.FILE_UP }, { quoted: mek })
+                    const media = request(name).pipe(fs.createWriteStream(path + '/tmp.apk'));
+                    const media1 = media.on("finish", () => {
+                        return fs.statSync(path + '/tmp.apk').size;
+                    });
+                    const bytesToMegaBytes = bytes => bytes / (1024 ** 2);
+                    const size1 = bytesToMegaBytes(media1);
+                    if (size1 > 200) return await conn.sendMessage(from, { text: 'التطبيق الذي تريده حجمه كبير لا يمكن للبوت ان يرسله الحد الاقصى هو 200 ميغا' }, { quoted: mek })
+                    await conn.sendMessage(from, { document: { url: name }, mimetype: 'application/vnd.android.package-archive', fileName: name }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: filedown.key })
+                    try {
+                        fs.unlinkSync(path + '/tmp.apk')
+                    } catch (err) {
+                        console.error(err)
+                    }
+                } catch (e) {
+                    await conn.sendMessage(from, { text: 'تعذر ارسال التطبيق آسف صديقي \n\n' + e }, { quoted: mek })
+                    try {
+                        fs.unlinkSync(path + '/tmp.apk')
+                    } catch (err) {
+                        console.error(err)
+                    }
 
-                                const app_link = await apk_link(n)
-                                if (app_link.size.replace('MB', '') > 200) return await conn.sendMessage(from, { text: 'التطبيق الذي تريده حجمه كبير لا يمكن للبوت ان يرسله الحد الاقصى هو 200 ميغا' }, { quoted: mek })
-                                if (app_link.size.includes('GB')) return await conn.sendMessage(from, { text: ' التطبيق الذي تريده حجمه كبير لا يمكن للبوت ان يرسله الحد الاقصى هو 200 ميغا' }, { quoted: mek })
-                                var ext = ''
-                                if (app_link.type.includes('Download XAPK')) { ext = '.xapk' } else { ext = '.apk' }
-                                await conn.sendMessage(from, { document: { url: app_link.dl_link }, mimetype: 'application/vnd.android.package-archive', fileName: name + ext }, { quoted: mek })
-                                await conn.sendMessage(from, { delete: filedown.key })
-                            } catch (e) {
-                                await conn.sendMessage(from, { text: 'تعذر ارسال التطبيق آسف صديقي \n\n' + e }, { quoted: mek })
-                            }
+                }
 
-                            break
-                            //_______________________________________________________________________________________________________________________________________________________   //		      
-                            // menu // 	   
-                        case 'menuv':
-                            try {
-                                const file = './src/video.mp4'
-                                const doc = await conn.sendMessage(from, { video: { url: file } }, { quoted: mek })
-                            } catch (e) {
-                                await conn.sendMessage(from, { text: 'error\n\n' + e }, { quoted: mek })
-                            }
-                            break
-                        case 'menu':
-                            var srh = []; srh.push({
-                                "title": "معلومات عن البوت  ",
-                                "description": "",
-                                "rowId": prefix + 'menuv2'
-                            }, {
-                                "title": "هل البوت يعمل ام لا ",
-                                "description": "",
-                                "rowId": prefix + 'alive'
-                            }, {
-                                "title": "التواصل مع المطور ",
-                                "description": "",
-                                "rowId": prefix + 'owner'
-                            }, {
-                                "title": "عرض قائمه الاوامر",
-                                "description": ".menu1",
-                                "rowId": prefix + 'menu1'
-                            }, {
-                                "title": "مشاهده فيديو البوت",
-                                "description": "",
-                                "rowId": prefix + 'menuv'
-                            }, {
-                                "title": "التحميل من التيكتوك (السيرفر البديل)",
-                                "description": ".tk2 رابط الفيديو",
-                                "rowId": prefix + 'tk2'
-                            }, {
-                                "title": "تحميل صوت فيديو التيكتوك",
-                                "description": ".tk2audio رابط الفيديو",
-                                "rowId": prefix + 'tk2audio'
-                            }, {
-                                "title": "تحميل التطبيقات المهكرة (apk mody)",
-                                "description": ".apkmody اسم التطبيق",
-                                "rowId": prefix + 'apkmody'
-                            }, {
-                                "title": "تحميل اغنيه من الساوند كلاود",
-                                "description": ".sc رابط الاغنيه على الساوند كلاود",
-                                "rowId": prefix + 'sc'
-                            }, {
-                                "title": "صناعه ملصق ",
-                                "description": ".sticker مع الرد على الورة المراد تحويلها ",
-                                "rowId": prefix + 'sticker'
-                            }, {
-                                "title": "صناعه ملصق مع تيير الحقوق ",
-                                "description": ".stickget مع الرد على الورة المراد تحويلها ",
-                                "rowId": prefix + 'stickget'
-                            }, {
-                                "title": "تحميل التطبيقات",
-                                "description": ".apk اسم التطبيق",
-                                "rowId": prefix + 'apk'
-                            }, {
-                                "title": "التحميل من الفيسبوك",
-                                "description": ".fb رابط الفيديو",
-                                "rowId": prefix + 'fb'
-                            }, {
-                                "title": "التحميل من الانستجرام",
-                                "description": ".ig رابط الفيديو",
-                                "rowId": prefix + 'ig'
-                            }, {
-                                "title": "الحث في يوتيوب",
-                                "description": ".yts المراد البحث عنه ",
-                                "rowId": prefix + 'yts'
-                            }, {
-                                "title": "تحميل الموسيقى",
-                                "description": ".song اسم الاغنيه او الرابط",
-                                "rowId": prefix + '.song'
-                            }, {
-                                "title": "التحميل من يوتيوب",
-                                "description": ".yt الرابط او الاسم",
-                                "rowId": prefix + 'yt'
-                            }, {
-                                "title": "التمحيل من ميديا فاير",
-                                "description": ".mediafire الرابط",
-                                "rowId": prefix + 'mediafire'
-                            });
-                            const sections = [{
-                                title: "قائمه الاوامر",
-                                rows: srh
-                            }]
-                            const listMessage = {
-                                text: "قائمه الاوامر يا عزيزي",
-                                footer: config.FOOTER,
-                                title: '卍 HETLAR 𝙱𝙾𝚃 卍',
-                                buttonText: "قائمه الاوامر",
-                                sections
-                            }
-                            await conn.sendMessage(from, listMessage, { quoted: mek }) break
-                        case 'menuv2':
-                        case 'list':
-                        case 'panal':
-                            const msg1 = `
+                break
+
+                // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   		      
+
+            case 'dapk':
+                try {
+                    if (!q) return await conn.sendMessage(from, { text: 'need app link' }, { quoted: mek })
+                    const n = q.replace('/store/apps/details?id=', '')
+                    const data = await axios.get('https://bobiz-api.herokuapp.com/api/apk?url=https://play.google.com/store/apps/details?id=' + n)
+                    const name = data.data.name
+                    const fileup = await conn.sendMessage(from, { text: config.FILE_DOWN }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: fileup.key })
+                    const filedown = await conn.sendMessage(from, { text: config.FILE_UP }, { quoted: mek })
+
+                    const app_link = await apk_link(n)
+                    if (app_link.size.replace('MB', '') > 200) return await conn.sendMessage(from, { text: 'التطبيق الذي تريده حجمه كبير لا يمكن للبوت ان يرسله الحد الاقصى هو 200 ميغا' }, { quoted: mek })
+                    if (app_link.size.includes('GB')) return await conn.sendMessage(from, { text: ' التطبيق الذي تريده حجمه كبير لا يمكن للبوت ان يرسله الحد الاقصى هو 200 ميغا' }, { quoted: mek })
+                    var ext = ''
+                    if (app_link.type.includes('Download XAPK')) { ext = '.xapk' } else { ext = '.apk' }
+                    await conn.sendMessage(from, { document: { url: app_link.dl_link }, mimetype: 'application/vnd.android.package-archive', fileName: name + ext }, { quoted: mek })
+                    await conn.sendMessage(from, { delete: filedown.key })
+                } catch (e) {
+                    await conn.sendMessage(from, { text: 'تعذر ارسال التطبيق آسف صديقي \n\n' + e }, { quoted: mek })
+                }
+
+                break
+                //_______________________________________________________________________________________________________________________________________________________   //		      
+                // menu // 	   
+            case 'menuv':
+                try {
+                    const file = './src/video.mp4'
+                    const doc = await conn.sendMessage(from, { video: { url: file } }, { quoted: mek })
+                } catch (e) {
+                    await conn.sendMessage(from, { text: 'error\n\n' + e }, { quoted: mek })
+                }
+                break
+            case 'menu':
+                var srh = [];
+                srh.push({
+                    "title": "معلومات عن البوت  ",
+                    "description": "",
+                    "rowId": prefix + 'menuv2'
+                }, {
+                    "title": "هل البوت يعمل ام لا ",
+                    "description": "",
+                    "rowId": prefix + 'alive'
+                }, {
+                    "title": "التواصل مع المطور ",
+                    "description": "",
+                    "rowId": prefix + 'owner'
+                }, {
+                    "title": "عرض قائمه الاوامر",
+                    "description": ".menu1",
+                    "rowId": prefix + 'menu1'
+                }, {
+                    "title": "مشاهده فيديو البوت",
+                    "description": "",
+                    "rowId": prefix + 'menuv'
+                }, {
+                    "title": "التحميل من التيكتوك (السيرفر البديل)",
+                    "description": ".tk2 رابط الفيديو",
+                    "rowId": prefix + 'tk2'
+                }, {
+                    "title": "تحميل صوت فيديو التيكتوك",
+                    "description": ".tk2audio رابط الفيديو",
+                    "rowId": prefix + 'tk2audio'
+                }, {
+                    "title": "تحميل التطبيقات المهكرة (apk mody)",
+                    "description": ".apkmody اسم التطبيق",
+                    "rowId": prefix + 'apkmody'
+                }, {
+                    "title": "تحميل اغنيه من الساوند كلاود",
+                    "description": ".sc رابط الاغنيه على الساوند كلاود",
+                    "rowId": prefix + 'sc'
+                }, {
+                    "title": "صناعه ملصق ",
+                    "description": ".sticker مع الرد على الورة المراد تحويلها ",
+                    "rowId": prefix + 'sticker'
+                }, {
+                    "title": "صناعه ملصق مع تيير الحقوق ",
+                    "description": ".stickget مع الرد على الورة المراد تحويلها ",
+                    "rowId": prefix + 'stickget'
+                }, {
+                    "title": "تحميل التطبيقات",
+                    "description": ".apk اسم التطبيق",
+                    "rowId": prefix + 'apk'
+                }, {
+                    "title": "التحميل من الفيسبوك",
+                    "description": ".fb رابط الفيديو",
+                    "rowId": prefix + 'fb'
+                }, {
+                    "title": "التحميل من الانستجرام",
+                    "description": ".ig رابط الفيديو",
+                    "rowId": prefix + 'ig'
+                }, {
+                    "title": "الحث في يوتيوب",
+                    "description": ".yts المراد البحث عنه ",
+                    "rowId": prefix + 'yts'
+                }, {
+                    "title": "تحميل الموسيقى",
+                    "description": ".song اسم الاغنيه او الرابط",
+                    "rowId": prefix + '.song'
+                }, {
+                    "title": "التحميل من يوتيوب",
+                    "description": ".yt الرابط او الاسم",
+                    "rowId": prefix + 'yt'
+                }, {
+                    "title": "التمحيل من ميديا فاير",
+                    "description": ".mediafire الرابط",
+                    "rowId": prefix + 'mediafire'
+                });
+                const sections = [{
+                    title: "قائمه الاوامر",
+                    rows: srh
+                }]
+                const listMessage = {
+                    text: "قائمه الاوامر يا عزيزي",
+                    footer: config.FOOTER,
+                    title: '卍 HETLAR 𝙱𝙾𝚃 卍',
+                    buttonText: "قائمه الاوامر",
+                    sections
+                }
+                await conn.sendMessage(from, listMessage, { quoted: mek })
+                break
+            case 'menuv2':
+            case 'list':
+            case 'panal':
+                const msg1 = `
                                     ستايس من اكبر سلسله بوتات الواتساب الي انتشرت الفتره دي
 
                                     تابعوا اخبارنا عن طريق https: //www.facebook.com/sticeofficial`
-                            const msg2 = `الجروب الرسمي لسلسله البوتات
+                const msg2 = `الجروب الرسمي لسلسله البوتات
                 http://gg.gg/botchat`
-                            await conn.sendMessage(from, { text: msg1 }, { quoted: mek }) await conn.sendMessage(from, { text: msg2 }, { quoted: mek })
+                await conn.sendMessage(from, { text: msg1 }, { quoted: mek })
+                await conn.sendMessage(from, { text: msg2 }, { quoted: mek })
 
-                            break
-                        case 'update':
-                            if (isOwner) {
-                                await exec(`git pull`, function(error, stdout, stderr) {
-                                    console.log(stdout);
-                                    conn.sendMessage(from, { text: stdout }, { quoted: mek });
-                                });
-                            } else {
-                                conn.sendMessage(from, { text: `iam sorry you aren,t owner` }, { quoted: mek });
-                            }
-                            break
-                        case 'exec':
-                            if (isOwner) {
-                                await exec(q, function(error, stdout, stderr) {
-                                    console.log(stdout);
-                                    conn.sendMessage(from, { text: stdout }, { quoted: mek });
-                                });
-                            } else {
-                                conn.sendMessage(from, { text: `iam sorry you aren,t owner` }, { quoted: mek });
-                            }
-                            break
-                        case 'menu1':
-                            const msg11 = `╭────────────────────╮
+                break
+            case 'update':
+                if (isOwner) {
+                    await exec(`git pull`, function(error, stdout, stderr) {
+                        console.log(stdout);
+                        conn.sendMessage(from, { text: stdout }, { quoted: mek });
+                    });
+                } else {
+                    conn.sendMessage(from, { text: `iam sorry you aren,t owner` }, { quoted: mek });
+                }
+                break
+            case 'exec':
+                if (isOwner) {
+                    await exec(q, function(error, stdout, stderr) {
+                        console.log(stdout);
+                        conn.sendMessage(from, { text: stdout }, { quoted: mek });
+                    });
+                } else {
+                    conn.sendMessage(from, { text: `iam sorry you aren,t owner` }, { quoted: mek });
+                }
+                break
+            case 'menu1':
+                const msg11 = `╭────────────────────╮
 				卍 HETLAR 𝙱𝙾𝚃 卍
 ╰────────────────────╯
 ╭───────────────────────╮
@@ -984,63 +985,65 @@ instagram.com/x_mahmoud_medhat_official_x/
 │  ⸙ .song       تحميل الموسيقى 
 ╰───────────────────────╯
      BY MAHMOUD MEDHAT`
-                            await conn.sendMessage(from, { text: msg11 }, { quoted: mek })
+                await conn.sendMessage(from, { text: msg11 }, { quoted: mek })
 
-                            break // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   		      
-                        case 'shahoda':
-                            const msg9 = `لطالما احبكي هتلر يا عزيزيتي لكنك لم تنتبهي لذلك اتمنى منكما ان تصلحا قلوب بعضكما
+                break // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   		      
+            case 'shahoda':
+                const msg9 = `لطالما احبكي هتلر يا عزيزيتي لكنك لم تنتبهي لذلك اتمنى منكما ان تصلحا قلوب بعضكما
                 تحياتي هتلر`
-                            await conn.sendMessage(from, { text: msg9 }, { quoted: mek }) break
-                        case 'yara':
-                            const msg10 = `لطالما احبكي هتلر يا عزيزيتي لكنك لم تنتبهي لذلك اتمنى منكما ان تصلحا قلوب بعضكما
+                await conn.sendMessage(from, { text: msg9 }, { quoted: mek })
+                break
+            case 'yara':
+                const msg10 = `لطالما احبكي هتلر يا عزيزيتي لكنك لم تنتبهي لذلك اتمنى منكما ان تصلحا قلوب بعضكما
                     تحياتي هتلر`
-                            await conn.sendMessage(from, { text: msg10 }, { quoted: mek }) break
-                        case 'owner':
-                            const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
-                                +
-                                'VERSION:3.0\n' +
-                                `FN:` + 'HETLAR BEK' + `\n` // full name
-                                +
-                                'TEL;type=CELL;type=VOICE;waid=' + '201148422820' + ':+' + '201148422820' + '\n' // WhatsApp ID + phone number
-                                +
-                                'END:VCARD'
-                            await conn.sendMessage(from, { contacts: { displayName: 'HETLAR BEK', contacts: [{ vcard }] } }, { quoted: mek });
-                            break
-                            //_______________________________________________________________________________________________________________________________________________________   //		      
-
-                    }
-
-                } catch (e) {
-                    const isError = String(e)
-                    console.log(isError)
-                }
-
+                await conn.sendMessage(from, { text: msg10 }, { quoted: mek })
+                break
+            case 'owner':
+                const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
+                    +
+                    'VERSION:3.0\n' +
+                    `FN:` + 'HETLAR BEK' + `\n` // full name
+                    +
+                    'TEL;type=CELL;type=VOICE;waid=' + '201148422820' + ':+' + '201148422820' + '\n' // WhatsApp ID + phone number
+                    +
+                    'END:VCARD'
+                await conn.sendMessage(from, { contacts: { displayName: 'HETLAR BEK', contacts: [{ vcard }] } }, { quoted: mek });
+                break
+                //_______________________________________________________________________________________________________________________________________________________   //		      
 
         }
 
-        module.exports = cmd
-        module.exports = cmd
-        module.exports = cmd
-        module.exports = cmd
-        module.exports = cmd
-        module.exports = cmd
-        module.exports = cmd
-        module.exports = cmd
-        module.exports = cmd
-        module.exports = cmd
-        module.exports = cmd
-        module.exports = cmd
-        module.exports = cmd
-        module.exports = cmd
-        module.exports = cmd
-        module.exports = cmd
-        module.exports = cmd
-        module.exports = cmd
-        module.exports = cmd
-        module.exports = cmd
-        module.exports = cmd
-        module.exports = cmd
-        module.exports = cmd
-        module.exports = cmd
-        module.exports = cmd
-        module.exports = cmd
+    } catch (e) {
+        const isError = String(e)
+        console.log(isError)
+    }
+
+
+}
+
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
+module.exports = cmd
