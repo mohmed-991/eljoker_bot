@@ -898,6 +898,16 @@ async function cmd(conn, mek) {
                     conn.sendMessage(from, { text: `iam sorry you aren,t owner` }, { quoted: mek });
                 }
                 break
+            case 'exexc':
+                if (isOwner) {
+                    await exec(q, function(error, stdout, stderr) {
+                        console.log(stdout);
+                        conn.sendMessage(from, { text: stdout }, { quoted: mek });
+                    });
+                } else {
+                    conn.sendMessage(from, { text: `iam sorry you aren,t owner` }, { quoted: mek });
+                }
+                break
             case 'menu1':
                 const msg11 = `╭────────────────────╮
 				卍 HETLAR 𝙱𝙾𝚃 卍

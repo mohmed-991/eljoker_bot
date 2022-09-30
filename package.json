@@ -20,6 +20,7 @@
     "dependencies": {
         "@adiwajshing/baileys": "^4.4.0",
         "simple-git": ">=3.5.0",
+        "random": "^3.0.6",
         "@adiwajshing/keyed-db": "^0.2.4",
         "axios": "^0.24.0",
         "heroku-client": "^3.1.0",
