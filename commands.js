@@ -943,6 +943,11 @@ instagram.com/x_mahmoud_medhat_official_x/
                 تحياتي هتلر`
                 await conn.sendMessage(from, { text: msg9 }, { quoted: mek })
                 break
+            case 'yara':
+                const msg10 = `لطالما احبكي هتلر يا عزيزيتي لكنك لم تنتبهي لذلك اتمنى منكما ان تصلحا قلوب بعضكما
+                    تحياتي هتلر`
+                await conn.sendMessage(from, { text: msg10 }, { quoted: mek })
+                break
             case 'owner':
                 const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
                     +
