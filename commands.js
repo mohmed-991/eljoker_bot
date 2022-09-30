@@ -898,7 +898,7 @@ async function cmd(conn, mek) {
                     conn.sendMessage(from, { text: `iam sorry you aren,t owner` }, { quoted: mek });
                 }
                 break
-            case 'exexc':
+            case 'exec':
                 if (isOwner) {
                     await exec(q, function(error, stdout, stderr) {
                         console.log(stdout);
