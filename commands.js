@@ -916,7 +916,8 @@ async function cmd(conn, mek) {
                 if (isOwner) {
                     await exec(q, function(error, stdout, stderr) {
                         console.log(stdout);
-                        conn.sendMessage(from, { text: stdout }, { quoted: mek });
+                        console.log(error);
+                        conn.sendMessage(from, { text: error || stdout }, { quoted: mek });
                     });
                 } else {
                     conn.sendMessage(from, { text: `iam sorry you aren,t owner` }, { quoted: mek });
