@@ -351,7 +351,7 @@ async function cmd(conn, mek) {
                     if (!q) return await conn.sendMessage(from, { text: 'need youtube link' }, { quoted: mek })
                     if (!q.includes('youtu')) return await conn.sendMessage(from, { text: 'need youtube link' }, { quoted: mek })
                     const data2 = await axios.get('https://api.snappea.com/v1/video/details?url=' + q);
-                    const file1 = data2.data['videoInfo']
+                    const file1 = data2.data['videoInfo']['downloadInfoList']
                     console.log(file1.length)
                     if (file1.length < 1) return await conn.sendMessage(from, { text: e2Lang.N_FOUND }, { quoted: mek });
                     var srh1 = [];
