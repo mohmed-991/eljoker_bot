@@ -390,17 +390,17 @@ async function cmd(conn, mek) {
                         return fs.statSync(path + '/tmp.mp3').size;
                     });
                     console.log(media01);
-                    await conn.sendMessage(from, { text: media01 }, { quoted: mek })
-                    try {
-                        fs.unlinkSync(path + '/tmp.mp3')
-                    } catch (err) {
-                        console.error(err)
-                    }
-                    // const docsongdown = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
-                    // await conn.sendMessage(from, { delete: docsongdown.key })
-                    // const docsongup = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
-                    // await conn.sendMessage(from, { audio: { url: file }, mimetype: 'audio/mpeg' }, { quoted: mek })
-                    // await conn.sendMessage(from, { delete: docsongup.key })
+                    await conn.sendMessage(from, { text: media01 + '\n' + media0 }, { quoted: mek })
+                        // try {
+                        //     fs.unlinkSync(path + '/tmp.mp3')
+                        // } catch (err) {
+                        //     console.error(err)
+                        // }
+                        // const docsongdown = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
+                        // await conn.sendMessage(from, { delete: docsongdown.key })
+                        // const docsongup = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
+                        // await conn.sendMessage(from, { audio: { url: file }, mimetype: 'audio/mpeg' }, { quoted: mek })
+                        // await conn.sendMessage(from, { delete: docsongup.key })
                 } catch (e) {
                     const mg12 = 'في حاله وجود اي خطأ او اقتراح برجاء التواصل مع المطور'
                     await conn.sendMessage(from, { text: mg12 }, { quoted: mek })
