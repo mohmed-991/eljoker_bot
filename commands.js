@@ -353,7 +353,7 @@ async function cmd(conn, mek) {
                     const data1 = await axios.get('https://api.snappea.com/v1/video/details?url=' + q);
                     const file = data1.data["videoInfo"]
                     if (file.length < 1) return await conn.sendMessage(from, { text: e2Lang.N_FOUND }, { quoted: mek })
-                    const s1 = data1.data["videoInfo"]["downloadInfoList"];
+                    const s1 = file["downloadInfoList"];
                     await conn.sendMessage(from, s1, { quoted: mek })
                     var srh = [];
                     for (var i = 0; i < file.length; i++) {
