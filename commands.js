@@ -353,26 +353,26 @@ async function cmd(conn, mek) {
                     const data2 = await axios.get('https://api.snappea.com/v1/video/details?url=' + q);
                     const file1 = data2.data['videoInfo']
                     if (file1.length < 1) return await conn.sendMessage(from, { text: e2Lang.N_FOUND }, { quoted: mek });
-                    var srh1 = [];
+                    var srh = [];
                     for (var i = 0; i < file1.length; i++) {
-                        srh1.push({
+                        srh.push({
                             title: data2.data['videoInfo']['downloadInfoList'][i]['formatExt'] + ' - ' + data2.data['videoInfo']['downloadInfoList'][i]['formatAlias'],
                             description: '',
                             rowId: prefix + 'send' + data2.data['videoInfo']['downloadInfoList'][i].partList[0]['urlList'][0]
                         });
                     }
-                    const sections1 = [{
+                    const sections = [{
                         title: "search results",
-                        rows: srh1
+                        rows: srh
                     }]
-                    const listMessage1 = {
+                    const listMessage = {
                         text: " \n\n name : " + file1["title"] + '\n\n ',
                         footer: config.FOOTER,
                         title: '卍 HETLAR 𝙱𝙾𝚃 卍 التحميل من اليوتيوب',
                         buttonText: "النتائج اضغط هنا",
-                        sections1
+                        sections
                     }
-                    await conn.sendMessage(from, listMessage1, { quoted: mek })
+                    await conn.sendMessage(from, listMessage, { quoted: mek })
                         // let r = (Math.random() + 1).toString(36).substring(7);
                         // const rand = r + '.mp3'
                         // const media = request(file).pipe(fs.createWriteStream('/tmp/' + file));
