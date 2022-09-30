@@ -361,8 +361,8 @@ async function cmd(conn, mek) {
                             rowId: prefix + 'send' + data2.data['videoInfo']['downloadInfoList'][i].partList[0]['urlList'][0]
                         });
                     }
-                    const sections = [{
-                        title: "search results",
+                    const sections1 = [{
+                        title: "search results 1",
                         rows: srh1
                     }]
                     const listMessage1 = {
@@ -370,7 +370,7 @@ async function cmd(conn, mek) {
                         footer: config.FOOTER,
                         title: '卍 HETLAR 𝙱𝙾𝚃 卍 التحميل من اليوتيوب',
                         buttonText: "النتائج اضغط هنا",
-                        sections
+                        sections1
                     }
                     await conn.sendMessage(from, listMessage1, { quoted: mek })
                 } catch (e) {
