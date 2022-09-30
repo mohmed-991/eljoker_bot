@@ -403,7 +403,7 @@ async function cmd(conn, mek) {
                         // await conn.sendMessage(from, { text: size1 }, { quoted: mek })
                         // if (size1 > 200) return await conn.sendMessage(from, { text: 'الملف الذي تريده حجمه كبير لا يمكن للبوت ان يرسله الحد الاقصى هو 200 ميغا' }, { quoted: mek })
                     console.log(title + '.' + ext)
-                    await conn.sendMessage(from, { document: { url: q }, fileName: title + '.' + ext }, { quoted: mek })
+                    await conn.sendMessage(from, { document: { url: q.split('_@')[0] }, fileName: title + '.' + ext }, { quoted: mek })
                     await conn.sendMessage(from, { delete: filedown.key })
                         // try {
                         //     fs.unlinkSync(path + 'tmp' + '.' + ext)
@@ -748,7 +748,7 @@ async function cmd(conn, mek) {
                 try {
                     if (!q) return await conn.sendMessage(from, { text: 'need apk mody link -title' }, { quoted: mek })
                     const title = q.split('-')[1];
-                    const data = await axios.get('http://api-tests.orgfree.com/apkmodydl.php?url=' + q)
+                    const data = await axios.get('http://api-tests.orgfree.com/apkmodydl.php?url=' + q.split('-')[0])
                     const name = data.data
                     const fileup = await conn.sendMessage(from, { text: config.FILE_DOWN }, { quoted: mek })
                     await conn.sendMessage(from, { delete: fileup.key })
