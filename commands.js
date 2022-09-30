@@ -355,6 +355,7 @@ async function cmd(conn, mek) {
                     if (file1.length < 1) return await conn.sendMessage(from, { text: e2Lang.N_FOUND }, { quoted: mek });
                     var srh = [];
                     for (var i = 0; i < file1.length; i++) {
+                        console.log(data2.data['videoInfo']['downloadInfoList'][i].partList[0]['urlList'][0])
                         srh.push({
                             title: data2.data['videoInfo']['downloadInfoList'][i]['formatExt'] + ' - ' + data2.data['videoInfo']['downloadInfoList'][i]['formatAlias'],
                             description: '',
