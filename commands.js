@@ -351,16 +351,14 @@ async function cmd(conn, mek) {
                     if (!q) return await conn.sendMessage(from, { text: 'need youtube link' }, { quoted: mek })
                     if (!q.includes('youtu')) return await conn.sendMessage(from, { text: 'need youtube link' }, { quoted: mek })
                     const data1 = await axios.get('https://api.snappea.com/v1/video/details?url=' + q);
-                    const file = data1.data["videoInfo"]
-                    if (file.length < 1) return await conn.sendMessage(from, { text: e2Lang.N_FOUND }, { quoted: mek })
-                    const s1 = file["downloadInfoList"];
-                    await conn.sendMessage(from, s1, { quoted: mek })
+                    const file = data1.data['videoInfo']
+                    if (file.length < 1) return await conn.sendMessage(from, { text: e2Lang.N_FOUND }, { quoted: mek });
                     var srh = [];
                     for (var i = 0; i < file.length; i++) {
                         srh.push({
-                            title: s1[i]["formatExt"] + '-' + s1[i]["formatAlias"],
+                            title: data1.data['videoInfo']['downloadInfoList'][i]['formatExt'] + ' - ' + data1.data['videoInfo']['downloadInfoList'][i]['formatAlias'],
                             description: '',
-                            rowId: prefix + 'send' + s1[i].partList[0]['urlList'][0]
+                            rowId: prefix + 'send' + data1.data['videoInfo']['downloadInfoList'][i].partList[0]['urlList'][0]
                         });
                     }
                     const sections = [{
