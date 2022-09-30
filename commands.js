@@ -373,13 +373,14 @@ async function cmd(conn, mek) {
                         buttonText: "النتائج اضغط هنا",
                         sections
                     }
-                    let r = (Math.random() + 1).toString(36).substring(7);
-                    const rand = r + '.mp3'
-                    const media = request(file).pipe(fs.createWriteStream('/tmp/' + file));
-                    const media1 = media.on("finish", () => {
-                        return fs.statSync('/tmp/' + file).size;
-                    });
-                    console.log(media1);
+                    await conn.sendMessage(from, listMessage, { quoted: mek })
+                    // let r = (Math.random() + 1).toString(36).substring(7);
+                    // const rand = r + '.mp3'
+                    // const media = request(file).pipe(fs.createWriteStream('/tmp/' + file));
+                    // const media1 = media.on("finish", () => {
+                    //     return fs.statSync('/tmp/' + file).size;
+                    // });
+                    // console.log(media1);
                     // const media1 = media.on("finish", () => {
                     //     return exec();
                     // });
