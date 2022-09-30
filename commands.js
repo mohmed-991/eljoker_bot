@@ -403,11 +403,11 @@ async function cmd(conn, mek) {
                     console.log(title + '.' + ext)
                     await conn.sendMessage(from, { document: { url: q }, fileName: title + '.' + ext }, { quoted: mek })
                     await conn.sendMessage(from, { delete: filedown.key })
-                    try {
-                        fs.unlinkSync(path + 'tmp' + '.' + ext)
-                    } catch (err) {
-                        console.error(err)
-                    }
+                        // try {
+                        //     fs.unlinkSync(path + 'tmp' + '.' + ext)
+                        // } catch (err) {
+                        //     console.error(err)
+                        // }
                 } catch (e) {
                     await conn.sendMessage(from, { text: 'تعذر ارسال التطبيق آسف صديقي \n\n' + e }, { quoted: mek })
                     try {
