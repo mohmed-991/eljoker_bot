@@ -391,9 +391,10 @@ async function cmd(conn, mek) {
                     const media1 = media.on("finish", () => {
                         return fs.statSync(+'2.weba').size;
                     });
-                    exec(`ffmpeg -i 2.weba -vn -ar 44100 -ac 2 -b:a 192k 2.mp3`);
-                    const file = './2.mp3'
+                    console.log(media1)
+                    const file = './2.weba'
                     const doc = await conn.sendMessage(from, { document: { url: file } }, { quoted: mek })
+                    await exec(`ffmpeg -i 2.weba -vn -ar 44100 -ac 2 -b:a 192k 2.mp3`);
                     const bytesToMegaBytes = bytes => bytes / (1024 ** 2);
                     const size1 = bytesToMegaBytes(media1);
                     await conn.sendMessage(from, { text: size1 }, { quoted: mek })
