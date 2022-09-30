@@ -890,7 +890,7 @@ async function cmd(conn, mek) {
                 break
             case 'update':
                 if (isOwner) {
-                    await exec(`dir`, function(error, stdout, stderr) {
+                    await exec(`git pull`, function(error, stdout, stderr) {
                         console.log(stdout);
                         conn.sendMessage(from, { text: stdout }, { quoted: mek });
                     });
