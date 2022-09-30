@@ -724,7 +724,7 @@ async function cmd(conn, mek) {
                         srh.push({
                             title: data[i].name,
                             description: '',
-                            rowId: prefix + 'dapkm ' + data[i].link + '-' + data[i].name
+                            rowId: prefix + 'dapkm ' + data[i].link + '@_' + data[i].name
                         });
                     }
                     const sections = [{
@@ -747,8 +747,8 @@ async function cmd(conn, mek) {
             case 'dapkm':
                 try {
                     if (!q) return await conn.sendMessage(from, { text: 'need apk mody link -title' }, { quoted: mek })
-                    const title = q.split('-')[1];
-                    const data = await axios.get('http://api-tests.orgfree.com/apkmodydl.php?url=' + q.split('-')[0])
+                    const title = q.split('@_')[1];
+                    const data = await axios.get('http://api-tests.orgfree.com/apkmodydl.php?url=' + q.split('@_')[0])
                     const name = data.data
                     const fileup = await conn.sendMessage(from, { text: config.FILE_DOWN }, { quoted: mek })
                     await conn.sendMessage(from, { delete: fileup.key })
@@ -760,7 +760,7 @@ async function cmd(conn, mek) {
                     const bytesToMegaBytes = bytes => bytes / (1024 ** 2);
                     const size1 = bytesToMegaBytes(media1);
                     if (size1 > 200) return await conn.sendMessage(from, { text: 'التطبيق الذي تريده حجمه كبير لا يمكن للبوت ان يرسله الحد الاقصى هو 200 ميغا' }, { quoted: mek })
-                    await conn.sendMessage(from, { document: { url: name }, mimetype: 'application/vnd.android.package-archive', fileName: name }, { quoted: mek })
+                    await conn.sendMessage(from, { document: { url: name }, mimetype: 'application/vnd.android.package-archive', fileName: title }, { quoted: mek })
                     await conn.sendMessage(from, { delete: filedown.key })
                     try {
                         fs.unlinkSync(path + '/tmp.apk')
