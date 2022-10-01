@@ -387,7 +387,7 @@ async function cmd(conn, mek) {
                     var ext = q.split('_@')[1];
                     const title = q.split('_@')[2];
                     switch (ext) {
-                        case ' mp3':
+                        case 'mp3':
                             const msg = '╔══[卍 HETLAR 𝙱𝙾𝚃 卍]══╗\n╠   📥YOUTUBE MP3 DL📤 ║\n╚═════════════╝\n\n║ select mp3 type \n\n╚═════════════◈'
                             const buttons = [
                                 { buttonId: prefix + 'ausong ' + q.split('_@')[0] + '_@' + title, buttonText: { displayText: 'AUDIO' }, type: 1 },
