@@ -387,11 +387,10 @@ async function cmd(conn, mek) {
                     const ext = q.split('_@')[1];
                     const title = q.split('_@')[2];
                     if (ext = 'mp3') {
-                        const w = q.split('_@')[0]
                         const msg = '╔══[卍 HETLAR 𝙱𝙾𝚃 卍]══╗\n╠   📥YOUTUBE MP3 DL📤 ║\n╚═════════════╝\n\n║ select mp3 type \n\n╚═════════════◈'
                         const buttons = [
-                            { buttonId: prefix + 'ausong ' + w + '_@' + title, buttonText: { displayText: 'AUDIO' }, type: 1 },
-                            { buttonId: prefix + 'dcsong ' + w + '_@' + title, buttonText: { displayText: 'DOCUMENT ' }, type: 1 },
+                            { buttonId: prefix + 'ausong ' + q.split('_@')[0] + '_@' + title, buttonText: { displayText: 'AUDIO' }, type: 1 },
+                            { buttonId: prefix + 'dcsong ' + q.split('_@')[0] + '_@' + title, buttonText: { displayText: 'DOCUMENT ' }, type: 1 },
                         ]
                         await conn.sendMessage(from, { text: msg, footer: config.FOOTER, buttons: buttons, headerType: 4 }, { quoted: mek })
 
