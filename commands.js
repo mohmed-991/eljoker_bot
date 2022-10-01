@@ -385,8 +385,19 @@ async function cmd(conn, mek) {
                 try {
                     if (!q) return await conn.sendMessage(from, { text: 'need file link -ext -title' }, { quoted: mek })
                     const ext = q.split('_@')[1];
-                    await conn.sendMessage(from, { text: ext }, { quoted: mek })
                     const title = q.split('_@')[2];
+                    if (ext = 'mp3') {
+                        const w = q.split('_@')[0]
+                        const msg = '╔══[卍 HETLAR 𝙱𝙾𝚃 卍]══╗\n╠   📥YOUTUBE MP3 DL📤 ║\n╚═════════════╝\n\n║ select mp3 type \n\n╚═════════════◈'
+                        const buttons = [
+                            { buttonId: prefix + 'ausong ' + w + '_@' + title, buttonText: { displayText: 'AUDIO' }, type: 1 },
+                            { buttonId: prefix + 'dcsong ' + w + '_@' + title, buttonText: { displayText: 'DOCUMENT ' }, type: 1 },
+                        ]
+                        await conn.sendMessage(from, { text: msg, footer: config.FOOTER, buttons: buttons, headerType: 4 }, { quoted: mek })
+
+
+                    }
+                    await conn.sendMessage(from, { text: ext }, { quoted: mek })
                     await conn.sendMessage(from, { text: title }, { quoted: mek })
                     const fileup = await conn.sendMessage(from, { text: config.FILE_DOWN }, { quoted: mek })
                     await conn.sendMessage(from, { delete: fileup.key })
@@ -411,7 +422,7 @@ async function cmd(conn, mek) {
                         //     console.error(err)
                         // }
                 } catch (e) {
-                    await conn.sendMessage(from, { text: 'تعذر ارسال التطبيق آسف صديقي \n\n' + e }, { quoted: mek })
+                    await conn.sendMessage(from, { text: 'تعذر ارسال الملف آسف صديقي \n\n' + e }, { quoted: mek })
                         // try {
                         //     fs.unlinkSync(path + 'tmp' + ext)
                         // } catch (err) {
@@ -423,7 +434,9 @@ async function cmd(conn, mek) {
                 //_______________________________________________________________________________________________________________________________________________________   //		      
                 // facebook //
             case 'send1':
-                await conn.sendMessage(from, { document: { url: q }, mimetype: 'audio/mpeg', fileName: q }, { quoted: mek })
+                if (isOwner) {
+                    await conn.sendMessage(from, { document: { url: q }, mimetype: 'audio/mpeg', fileName: q }, { quoted: mek })
+                }
                 break
 
             case 'fb':
@@ -553,14 +566,12 @@ async function cmd(conn, mek) {
 
             case 'dcsong':
                 try {
-                    if (!q) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
-
-                    if (!q.includes('youtu')) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
-                    let docsong = await ytmp3(q)
+                    if (!q) return await conn.sendMessage(from, { text: 'need dl link' }, { quoted: mek })
+                    const title = q.split('_@')[1];
                     const docsongdown = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
                     await conn.sendMessage(from, { delete: docsongdown.key })
                     const docsongup = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
-                    const doc = await conn.sendMessage(from, { document: { url: docsong.mp3 }, mimetype: 'audio/mpeg', fileName: docsong.title + '.mp3' }, { quoted: mek })
+                    const doc = await conn.sendMessage(from, { document: { url: q.split('_@')[0] + '.mp3' }, mimetype: 'audio/mpeg', fileName: title + '.mp3' }, { quoted: mek })
 
                     await conn.sendMessage(from, { delete: docsongup.key })
 
@@ -577,13 +588,11 @@ async function cmd(conn, mek) {
             case 'ausong':
                 try {
                     if (!q) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
-
-                    if (!q.includes('youtu')) return await conn.sendMessage(from, { text: 'need yt link' }, { quoted: mek })
-                    let docsong = await ytmp3(q)
+                    const title = q.split('_@')[1];
                     const docsongdown = await conn.sendMessage(from, { text: config.SONG_DOWN }, { quoted: mek })
                     await conn.sendMessage(from, { delete: docsongdown.key })
                     const docsongup = await conn.sendMessage(from, { text: config.SONG_UP }, { quoted: mek })
-                    await conn.sendMessage(from, { audio: { url: docsong.mp3 }, mimetype: 'audio/mp4' }, { quoted: mek })
+                    await conn.sendMessage(from, { audio: { url: q.split('_@')[0] + '.mp3' }, mimetype: 'audio/mp4', fileName: title + '.m4a' }, { quoted: mek })
                     await conn.sendMessage(from, { delete: docsongup.key })
 
 
