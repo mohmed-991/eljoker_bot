@@ -393,8 +393,7 @@ async function cmd(conn, mek) {
                             { buttonId: prefix + 'dcsong ' + q.split('_@')[0] + '_@' + title, buttonText: { displayText: 'DOCUMENT ' }, type: 1 },
                         ]
                         await conn.sendMessage(from, { text: msg, footer: config.FOOTER, buttons: buttons, headerType: 4 }, { quoted: mek })
-                    } 
-                    if(ext ='mp4'){
+                    } else if (ext = 'mp4') {
                         await conn.sendMessage(from, { text: ext }, { quoted: mek })
                         await conn.sendMessage(from, { text: title }, { quoted: mek })
                         const fileup = await conn.sendMessage(from, { text: config.FILE_DOWN }, { quoted: mek })
@@ -412,13 +411,13 @@ async function cmd(conn, mek) {
                             // await conn.sendMessage(from, { text: size1 }, { quoted: mek })
                             // if (size1 > 200) return await conn.sendMessage(from, { text: 'الملف الذي تريده حجمه كبير لا يمكن للبوت ان يرسله الحد الاقصى هو 200 ميغا' }, { quoted: mek })
                         console.log(title + '.' + ext)
-                        await conn.sendMessage(from, { video: { url: q.split('_@')[0] }, { quoted: mek })
-                        await conn.sendMessage(from, { delete: filedown.key })
-                            // try {
-                            //     fs.unlinkSync(path + 'tmp' + '.' + ext)
-                            // } catch (err) {
-                            //     console.error(err)
-                            // }
+                        const doc = await conn.sendMessage(from, { video: { url: q.split('_@')[0] }, caption: config.CAPTION }, { quoted: mek })
+                        await conn.sendMessage(from, { delete: filedown.key });
+                        // try {
+                        //     fs.unlinkSync(path + 'tmp' + '.' + ext)
+                        // } catch (err) {
+                        //     console.error(err)
+                        // }
                     }
                 } catch (e) {
                     await conn.sendMessage(from, { text: 'تعذر ارسال الملف آسف صديقي \n\n' + e }, { quoted: mek })
