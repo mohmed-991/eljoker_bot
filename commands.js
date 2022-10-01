@@ -384,7 +384,7 @@ async function cmd(conn, mek) {
             case 'send':
                 try {
                     if (!q) return await conn.sendMessage(from, { text: 'need file link -ext -title' }, { quoted: mek })
-                    const ext = q.split('_@')[1];
+                    var ext = q.split('_@')[1];
                     const title = q.split('_@')[2];
                     if (ext = 'mp3') {
                         const msg = '╔══[卍 HETLAR 𝙱𝙾𝚃 卍]══╗\n╠   📥YOUTUBE MP3 DL📤 ║\n╚═════════════╝\n\n║ select mp3 type \n\n╚═════════════◈'
