@@ -436,7 +436,7 @@ async function cmd(conn, mek) {
                 // facebook //
             case 'send1':
                 if (isOwner) {
-                    await conn.sendMessage(from, { document: { url: q }, mimetype: 'audio/mpeg', fileName: q }, { quoted: mek })
+                    await conn.sendMessage(from, { document: { url: q }, fileName: q }, { quoted: mek })
                 }
                 break
 
