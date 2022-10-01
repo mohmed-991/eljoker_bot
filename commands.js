@@ -123,31 +123,31 @@ async function cmd(conn, mek) {
             case 'stic':
                 const v = sms(conn, mek)
                 const isQuotedViewOnce = v.quoted ? (v.quoted.type === 'viewOnceMessage') : false
-                //const isQuotedImage = v.quoted ? ((v.quoted.type === 'imageMessage') || (isQuotedViewOnce ? (v.quoted.msg.type === 'imageMessage') : false)) : false
-                //const isQuotedVideo = v.quoted ? ((v.quoted.type === 'videoMessage') || (isQuotedViewOnce ? (v.quoted.msg.type === 'videoMessage') : false)) : false
+                    //const isQuotedImage = v.quoted ? ((v.quoted.type === 'imageMessage') || (isQuotedViewOnce ? (v.quoted.msg.type === 'imageMessage') : false)) : false
+                    //const isQuotedVideo = v.quoted ? ((v.quoted.type === 'videoMessage') || (isQuotedViewOnce ? (v.quoted.msg.type === 'videoMessage') : false)) : false
                 var mtype = v.quoted.msg.type
                 switch (mtype) {
-                case 'imageMessage' :
-                    const cstic = await conn.sendMessage(from, { text: 'creating جاري صناعة الملصق' }, { quoted: mek })
-                    var nameJpg = getRandom('')
-                    isQuotedImage ? await v.quoted.download(nameJpg) : await v.download(nameJpg)
-                    var stik = await imageToWebp(nameJpg + '.jpg')
-                    writeExif(stik, { packname: config.STIC_WM, author: '' })
-                        .then(x => v.replyS(x))
-                    await conn.sendMessage(from, { delete: cstic.key })
-                break;
-                case 'videoMessage' :
-                    const cstic = await conn.sendMessage(from, { text: 'creating' }, { quoted: mek })
-                    var nameMp4 = getRandom('')
-                    isQuotedVideo ? await v.quoted.download(nameMp4) : await v.download(nameMp4)
-                    writeExif(stik, { packname: config.STIC_WM, author: '' })
-                        .then(x => v.replyS(x))
-                    await conn.sendMessage(from, { delete: cstic.key })
-                break;
-                default:
-                    v.reply('فين الصورة او افيديو اللي عاوز تحولهم يغالي')
-                break;
-}
+                    case 'imageMessage':
+                        const cstic = await conn.sendMessage(from, { text: 'creating جاري صناعة الملصق' }, { quoted: mek })
+                        var nameJpg = getRandom('')
+                        isQuotedImage ? await v.quoted.download(nameJpg) : await v.download(nameJpg)
+                        var stik = await imageToWebp(nameJpg + '.jpg')
+                        writeExif(stik, { packname: config.STIC_WM, author: '' })
+                            .then(x => v.replyS(x))
+                        await conn.sendMessage(from, { delete: cstic.key })
+                        break;
+                    case 'videoMessage':
+                        const cstic1 = await conn.sendMessage(from, { text: 'creating' }, { quoted: mek })
+                        var nameMp4 = getRandom('')
+                        isQuotedVideo ? await v.quoted.download(nameMp4) : await v.download(nameMp4)
+                        writeExif(stik, { packname: config.STIC_WM, author: '' })
+                            .then(x => v.replyS(x))
+                        await conn.sendMessage(from, { delete: cstic1.key })
+                        break;
+                    default:
+                        v.reply('فين الصورة او افيديو اللي عاوز تحولهم يغالي')
+                        break;
+                }
                 break;
                 // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //      
             case 'sticget':
