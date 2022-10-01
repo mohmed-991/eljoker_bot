@@ -130,7 +130,7 @@ async function cmd(conn, mek) {
                 switch (mtype) {
                     case 'imageMessage':
                         const cstic = await conn.sendMessage(from, { text: 'creating جاري صناعة الملصق' }, { quoted: mek })
-                        var nameJpg = getRandom('')
+                        var nameJpg = 'dfdfsdfsd'
                         isQuotedImage ? await v.quoted.download(nameJpg) : await v.download(nameJpg)
                         var stik = await imageToWebp(nameJpg + '.jpg')
                         writeExif(stik, { packname: config.STIC_WM, author: '' })
