@@ -393,7 +393,7 @@ async function cmd(conn, mek) {
                             { buttonId: prefix + 'dcsong ' + q.split('_@')[0] + '_@' + title, buttonText: { displayText: 'DOCUMENT ' }, type: 1 },
                         ]
                         await conn.sendMessage(from, { text: msg, footer: config.FOOTER, buttons: buttons, headerType: 4 }, { quoted: mek })
-                    } else {
+                    } if(ext ='mp4'){
                         await conn.sendMessage(from, { text: ext }, { quoted: mek })
                         await conn.sendMessage(from, { text: title }, { quoted: mek })
                         const fileup = await conn.sendMessage(from, { text: config.FILE_DOWN }, { quoted: mek })
