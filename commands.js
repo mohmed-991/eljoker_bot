@@ -125,7 +125,7 @@ async function cmd(conn, mek) {
                 const isQuotedViewOnce = v.quoted ? (v.quoted.type === 'viewOnceMessage') : false
                 const isQuotedImage = v.quoted ? ((v.quoted.type === 'imageMessage') || (isQuotedViewOnce ? (v.quoted.msg.type === 'imageMessage') : false)) : false
                 const isQuotedVideo = v.quoted ? ((v.quoted.type === 'videoMessage') || (isQuotedViewOnce ? (v.quoted.msg.type === 'videoMessage') : false)) : false
-                var mtype = v.type
+                var mtype = v.quoted.msg.type
                 await conn.sendMessage(from, { text: mtype }, { quoted: mek })
                 switch (mtype) {
                     case 'imageMessage':
