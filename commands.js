@@ -131,7 +131,6 @@ async function cmd(conn, mek) {
                     case 'imageMessage':
                         const cstic = await conn.sendMessage(from, { text: 'creating جاري صناعة الملصق' }, { quoted: mek })
                         var nameJpg = getRandom('')
-                        const v = sms(conn, mek)
                         const isQuotedViewOnce = v.quoted ? (v.quoted.type === 'viewOnceMessage') : false
                         const isQuotedImage = v.quoted ? ((v.quoted.type === 'imageMessage') || (isQuotedViewOnce ? (v.quoted.msg.type === 'imageMessage') : false)) : false
                         isQuotedImage ? await v.quoted.download(nameJpg) : await v.download(nameJpg)
