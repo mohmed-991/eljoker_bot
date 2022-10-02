@@ -72,7 +72,6 @@ async function cmd(conn, mek) {
 
         const isCmd = body.startsWith(prefix)
         const command = isCmd ? body.slice(prefix.length).trim().split(' ').shift().toLowerCase() : ''
-
         const args = body.trim().split(/ +/).slice(1)
         const q = args.join(' ')
         const isGroup = from.endsWith('@g.us')
@@ -125,29 +124,24 @@ async function cmd(conn, mek) {
                 const isQuotedViewOnce = v.quoted ? (v.quoted.type === 'viewOnceMessage') : false
                 const isQuotedImage = v.quoted ? ((v.quoted.type === 'imageMessage') || (isQuotedViewOnce ? (v.quoted.msg.type === 'imageMessage') : false)) : false
                 const isQuotedVideo = v.quoted ? ((v.quoted.type === 'videoMessage') || (isQuotedViewOnce ? (v.quoted.msg.type === 'videoMessage') : false)) : false
-                var mtype = v.type
-                await conn.sendMessage(from, { text: mtype }, { quoted: mek })
-                switch (mtype || isQuotedImage || isQuotedVideo) {
-                    case 'imageMessage' || isQuotedImage:
-                        const cstic = await conn.sendMessage(from, { text: 'creating جاري صناعة الملصق' }, { quoted: mek })
-                        var nameJpg = 'dfdfsdfsd'
-                        isQuotedImage ? await v.quoted.download(nameJpg) : await v.download(nameJpg)
-                        var stik = await imageToWebp(nameJpg + '.jpg')
-                        writeExif(stik, { packname: config.STIC_WM, author: '' })
-                            .then(x => v.replyS(x))
-                        await conn.sendMessage(from, { delete: cstic.key })
-                        break;
-                    case 'videoMessage' || isQuotedVideo:
-                        const cstic1 = await conn.sendMessage(from, { text: 'creating' }, { quoted: mek })
-                        var nameMp4 = getRandom('')
-                        isQuotedVideo ? await v.quoted.download(nameMp4) : await v.download(nameMp4)
-                        writeExif(stik, { packname: config.STIC_WM, author: '' })
-                            .then(x => v.replyS(x))
-                        await conn.sendMessage(from, { delete: cstic1.key })
-                        break;
-                    default:
-                        v.reply('فين الصورة او افيديو اللي عاوز تحولهم يغالي')
-                        break;
+                    // await conn.sendMessage(from, { text: mtype }, { quoted: mek })
+                if ((v.type === 'imageMessage') || isQuotedImage) {
+                    const cstic = await conn.sendMessage(from, { text: 'creating جاري صناعة الملصق' }, { quoted: mek })
+                    var nameJpg = 'dfdfsdfsd'
+                    isQuotedImage ? await v.quoted.download(nameJpg) : await v.download(nameJpg)
+                    var stik = await imageToWebp(nameJpg + '.jpg')
+                    writeExif(stik, { packname: config.STIC_WM, author: '' })
+                        .then(x => v.replyS(x))
+                    await conn.sendMessage(from, { delete: cstic.key })
+                } else if ((v.type === 'videoMessage') || isQuotedVideo) {
+                    const cstic1 = await conn.sendMessage(from, { text: 'creating' }, { quoted: mek })
+                    var nameMp4 = getRandom('')
+                    isQuotedVideo ? await v.quoted.download(nameMp4) : await v.download(nameMp4)
+                    writeExif(stik, { packname: config.STIC_WM, author: '' })
+                        .then(x => v.replyS(x))
+                    await conn.sendMessage(from, { delete: cstic1.key })
+                } else {
+                    v.reply('فين الصورة او افيديو اللي عاوز تحولهم يغالي')
                 }
                 break;
                 // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //      
