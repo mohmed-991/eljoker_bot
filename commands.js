@@ -669,8 +669,41 @@ async function cmd(conn, mek) {
                 }
                 break
                 // _ _ _ _ _ _ _ _ __  _ _ _ _ _ _  __  _ _ _ __ _  __ _  _ _ _ _ __ _ _  __  __ _  _ __  _ __ _ _ _  _ __ _  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __  __ _  __ _ _ _ _   //   		      
-
             case 'yts':
+                if (!q) return await conn.sendMessage(from, { text: 'أكتب عنوان الفيديو الدي تود البحث عنه' }, { quoted: mek })
+                try {
+                    const data2 = await axios.get(encodeURI('http://api-tests.orgfree.com/yts.php?search=' + q));
+                    const ytss = data2.data['results']
+                    if (ytss.length < 1) { await conn.sendMessage(from, { text: 'لم يتم العثور على اي شيء ' }, { quoted: mek }) } else {
+                        var srh = [];
+                        const title = 'نتائج البحث عن ' + q
+                        for (var i = 0; i < file1.length; i++) {
+                            srh.push({
+                                title: data2.data['results'][i]['title'],
+                                description: 'time : ' + data2.data['results'][i]['time'] + ' views : ' + data2.data['results'][i]['view'],
+                                rowId: prefix + 'sonyt' + " " + data2.data['results'][i]['url']
+                            });
+                        }
+                        const sections = [{
+                            title: "search results",
+                            rows: srh
+                        }]
+                        const listMessage = {
+                                text: title,
+                                footer: config.FOOTER,
+                                title: '卍 HETLAR 𝙱𝙾𝚃 卍\n البحث في يوتيوب',
+                                buttonText: "النتائج اضغط هنا",
+                                sections
+                            }
+                            // console.log(listMessage1)
+                        await conn.sendMessage(from, listMessage, { quoted: mek })
+
+                    }
+                } catch (e) {
+                    await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
+                }
+                break
+            case 'yts0':
                 try {
                     if (!q) return await conn.sendMessage(from, { text: 'أكتب عنوان الفيديو الدي تود البحث عنه' }, { quoted: mek })
                     try {
