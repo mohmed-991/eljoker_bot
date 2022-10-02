@@ -134,6 +134,8 @@ async function cmd(conn, mek) {
                         .then(x => v.replyS(x))
                     await conn.sendMessage(from, { delete: cstic.key })
                 } else if ((v.type === 'videoMessage') || isQuotedVideo) {
+                    await conn.sendMessage(from, { text: v.type }, { quoted: mek }) // await conn.sendMessage(from, { text: mtype }, { quoted: mek })
+                    await conn.sendMessage(from, { text: isQuotedVideo }, { quoted: mek })
                     const cstic1 = await conn.sendMessage(from, { text: 'creating' }, { quoted: mek })
                     var nameMp4 = getRandom('')
                     isQuotedVideo ? await v.quoted.download(nameMp4) : await v.download(nameMp4)
