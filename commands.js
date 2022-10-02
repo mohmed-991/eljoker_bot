@@ -182,6 +182,7 @@ async function cmd(conn, mek) {
                         const cstic = await conn.sendMessage(from, { text: 'creating' }, { quoted: mek })
                         var nameMp4 = getRandom('')
                         isQuotedVideo ? await v.quoted.download(nameMp4) : await v.download(nameMp4)
+                        var stik = await videoToWebp(nameMp4 + '.mp4')
                         writeExif(stik, { packname: packname, author: creater })
                             .then(x => v.replyS(x))
                         await conn.sendMessage(from, { delete: cstic.key })
