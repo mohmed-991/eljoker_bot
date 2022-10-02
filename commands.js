@@ -681,7 +681,7 @@ async function cmd(conn, mek) {
                             srh.push({
                                 title: data2.data['results'][i]['title'],
                                 description: 'time : ' + data2.data['results'][i]['time'] + ' views : ' + data2.data['results'][i]['view'],
-                                rowId: prefix + 'songyt' + " " + data2.data['results'][i]['url']
+                                rowId: prefix + 'songyt' + " https://www.youtube.com/watch?v=" + data2.data['results'][i]['url']
                             });
                         }
                         const sections = [{
