@@ -700,7 +700,7 @@ async function cmd(conn, mek) {
 
                     }
                 } catch (e) {
-                    await conn.sendMessage(from, { text: 'error' }, { quoted: mek })
+                    await conn.sendMessage(from, { text: 'error' + e }, { quoted: mek })
                 }
                 break
             case 'yts0':
