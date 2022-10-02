@@ -136,12 +136,12 @@ async function cmd(conn, mek) {
                 } else if ((v.type === 'videoMessage') || isQuotedVideo) {
                     await conn.sendMessage(from, { text: v.type }, { quoted: mek }) // await conn.sendMessage(from, { text: mtype }, { quoted: mek })
                     await conn.sendMessage(from, { text: isQuotedVideo }, { quoted: mek })
-                    const cstic = await conn.sendMessage(from, { text: 'creating' }, { quoted: mek })
+                    await conn.sendMessage(from, { text: 'creating' }, { quoted: mek })
                     var nameMp4 = getRandom('')
                     isQuotedVideo ? await v.quoted.download(nameMp4) : await v.download(nameMp4)
                     writeExif(stik, { packname: config.STIC_WM, author: '' })
                         .then(x => v.replyS(x))
-                    await conn.sendMessage(from, { delete: cstic.key })
+                        // await conn.sendMessage(from, { delete: cstic.key })
                 } else {
                     v.reply('فين الصورة او افيديو اللي عاوز تحولهم يغالي')
                 }
