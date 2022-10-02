@@ -677,7 +677,7 @@ async function cmd(conn, mek) {
                     if (ytss.length < 1) { await conn.sendMessage(from, { text: 'لم يتم العثور على اي شيء ' }, { quoted: mek }) } else {
                         var srh = [];
                         const title = 'نتائج البحث عن ' + q
-                        for (var i = 0; i < file1.length; i++) {
+                        for (var i = 0; i < ytss.length; i++) {
                             srh.push({
                                 title: data2.data['results'][i]['title'],
                                 description: 'time : ' + data2.data['results'][i]['time'] + ' views : ' + data2.data['results'][i]['view'],
