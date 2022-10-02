@@ -125,10 +125,10 @@ async function cmd(conn, mek) {
                 const isQuotedViewOnce = v.quoted ? (v.quoted.type === 'viewOnceMessage') : false
                 const isQuotedImage = v.quoted ? ((v.quoted.type === 'imageMessage') || (isQuotedViewOnce ? (v.quoted.msg.type === 'imageMessage') : false)) : false
                 const isQuotedVideo = v.quoted ? ((v.quoted.type === 'videoMessage') || (isQuotedViewOnce ? (v.quoted.msg.type === 'videoMessage') : false)) : false
-                var mtype = v.quoted.msg.type
+                var mtype = v.type
                 await conn.sendMessage(from, { text: mtype }, { quoted: mek })
-                switch (mtype) {
-                    case 'imageMessage':
+                switch (mtype || isQuotedImage || isQuotedVideo) {
+                    case 'imageMessage' || isQuotedImage:
                         const cstic = await conn.sendMessage(from, { text: 'creating جاري صناعة الملصق' }, { quoted: mek })
                         var nameJpg = 'dfdfsdfsd'
                         isQuotedImage ? await v.quoted.download(nameJpg) : await v.download(nameJpg)
@@ -137,7 +137,7 @@ async function cmd(conn, mek) {
                             .then(x => v.replyS(x))
                         await conn.sendMessage(from, { delete: cstic.key })
                         break;
-                    case 'videoMessage':
+                    case 'videoMessage' || isQuotedVideo:
                         const cstic1 = await conn.sendMessage(from, { text: 'creating' }, { quoted: mek })
                         var nameMp4 = getRandom('')
                         isQuotedVideo ? await v.quoted.download(nameMp4) : await v.download(nameMp4)
