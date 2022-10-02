@@ -127,18 +127,19 @@ async function cmd(conn, mek) {
                     // await conn.sendMessage(from, { text: mtype }, { quoted: mek })
                 if ((v.type === 'imageMessage') || isQuotedImage) {
                     const cstic = await conn.sendMessage(from, { text: 'creating جاري صناعة الملصق' }, { quoted: mek })
-                    var nameJpg = 'dfdfsdfsd'
+                    var nameJpg = getRandom('')
                     isQuotedImage ? await v.quoted.download(nameJpg) : await v.download(nameJpg)
                     var stik = await imageToWebp(nameJpg + '.jpg')
                     writeExif(stik, { packname: config.STIC_WM, author: '' })
                         .then(x => v.replyS(x))
                     await conn.sendMessage(from, { delete: cstic.key })
                 } else if ((v.type === 'videoMessage') || isQuotedVideo) {
-                    await conn.sendMessage(from, { text: v.type }, { quoted: mek }) // await conn.sendMessage(from, { text: mtype }, { quoted: mek })
-                    await conn.sendMessage(from, { text: isQuotedVideo }, { quoted: mek })
+                    // await conn.sendMessage(from, { text: v.type }, { quoted: mek }) // await conn.sendMessage(from, { text: mtype }, { quoted: mek })
+                    // await conn.sendMessage(from, { text: isQuotedVideo }, { quoted: mek })
                     await conn.sendMessage(from, { text: 'creating' }, { quoted: mek })
                     var nameMp4 = getRandom('')
                     isQuotedVideo ? await v.quoted.download(nameMp4) : await v.download(nameMp4)
+                    var stik = await videoToWebp(nameMp4 + '.mp4')
                     writeExif(stik, { packname: config.STIC_WM, author: '' })
                         .then(x => v.replyS(x))
                         // await conn.sendMessage(from, { delete: cstic.key })
