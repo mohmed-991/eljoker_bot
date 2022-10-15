@@ -18,7 +18,7 @@ const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep }
 const fs = require('fs');
 const request = require("request"),
     path = '/tmp';
-const ownerNumber = ['201148422820']
+const ownerNumber = ['201156831816']
 const prefix = '.'
 const axios = require('axios');
 const { yt720, yt480, yt360 } = require('./lib/ytmp4');
@@ -450,7 +450,7 @@ async function cmd(conn, mek) {
                     if (!q) return await conn.sendMessage(from, { text: 'need fb link  اين هو رابط فيديو الفيسبوك الذي تريد تحميله' }, { quoted: mek })
                     const isfb = q.includes('facebook.com') ? q.includes('facebook.com') : q.includes('fb.watch') ? q.includes('fb.watch') : ''
                     if (!isfb) return await conn.sendMessage(from, { text: 'need fb link' }, { quoted: mek })
-                    const msg = '╔══[卍 HETLAR 𝙱𝙾𝚃 卍]══╗\n╠  *📥FB DOWNLOADER📤*  ╣\n╚═════════════╝\n\n║ اختر الجودة التي تريدها \n\n╚═════════════◈'
+                    const msg = '╔══[卍 Mohamed 𝙱𝙾𝚃 卍]══╗\n╠  *📥FB DOWNLOADER📤*  ╣\n╚═════════════╝\n\n║ اختر الجودة التي تريدها \n\n╚═════════════◈'
                     const buttons = [
                         { buttonId: prefix + 'sdfb ' + q, buttonText: { displayText: 'SD ' }, type: 1 },
                         { buttonId: prefix + 'hdfb ' + q, buttonText: { displayText: 'HD ' }, type: 1 },
@@ -1038,7 +1038,7 @@ instagram.com/engineer_mohamed_adel991/
                     'TEL;type=CELL;type=VOICE;waid=' + '201156831816' + ':+' + '201156831816' + '\n' // WhatsApp ID + phone number
                     +
                     'END:VCARD'
-                await conn.sendMessage(from, { contacts: { displayName: 'HETLAR BEK', contacts: [{ vcard }] } }, { quoted: mek });
+                await conn.sendMessage(from, { contacts: { displayName: 'Mohamed BEK', contacts: [{ vcard }] } }, { quoted: mek });
                 break
                 //_______________________________________________________________________________________________________________________________________________________   //		      
 
